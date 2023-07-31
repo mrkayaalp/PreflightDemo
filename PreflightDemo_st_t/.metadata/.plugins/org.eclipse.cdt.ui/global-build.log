@@ -1,0 +1,424 @@
+21:08:17 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t {aka unsigned char}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t' {aka 'unsigned char'}
+../Core/Src/freertos.c:166:49: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  166 |     HAL_UART_Transmit(&huart2, flightStateData, strlen(flightStateData), 100);
+      |                                                 ^~~~~~
+../Core/Src/freertos.c:32:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   31 | #include "usart.h"
+  +++ |+#include <string.h>
+   32 | 
+../Core/Src/freertos.c:166:49: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  166 |     HAL_UART_Transmit(&huart2, flightStateData, strlen(flightStateData), 100);
+      |                                                 ^~~~~~
+../Core/Src/freertos.c:166:49: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/freertos.c:166:56: warning: passing argument 1 of 'strlen' makes pointer from integer without a cast [-Wint-conversion]
+  166 |     HAL_UART_Transmit(&huart2, flightStateData, strlen(flightStateData), 100);
+      |                                                        ^~~~~~~~~~~~~~~
+      |                                                        |
+      |                                                        uint8_t {aka unsigned char}
+../Core/Src/freertos.c:166:56: note: expected 'const char *' but argument is of type 'uint8_t' {aka 'unsigned char'}
+../Core/Src/freertos.c:166:32: warning: passing argument 2 of 'HAL_UART_Transmit' makes pointer from integer without a cast [-Wint-conversion]
+  166 |     HAL_UART_Transmit(&huart2, flightStateData, strlen(flightStateData), 100);
+      |                                ^~~~~~~~~~~~~~~
+      |                                |
+      |                                uint8_t {aka unsigned char}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/freertos.c:23:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:722:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  722 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50664	    484	  21388	  72536	  11b58	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+21:08:27 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50664	    484	  21388	  72536	  11b58	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+21:14:44 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t {aka unsigned char}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t' {aka 'unsigned char'}
+../Core/Src/freertos.c:166:52: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  166 |     HAL_UART_Transmit_IT(&huart2, flightStateData, strlen(flightStateData));
+      |                                                    ^~~~~~
+../Core/Src/freertos.c:32:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   31 | #include "usart.h"
+  +++ |+#include <string.h>
+   32 | 
+../Core/Src/freertos.c:166:52: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  166 |     HAL_UART_Transmit_IT(&huart2, flightStateData, strlen(flightStateData));
+      |                                                    ^~~~~~
+../Core/Src/freertos.c:166:52: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/freertos.c:166:59: warning: passing argument 1 of 'strlen' makes pointer from integer without a cast [-Wint-conversion]
+  166 |     HAL_UART_Transmit_IT(&huart2, flightStateData, strlen(flightStateData));
+      |                                                           ^~~~~~~~~~~~~~~
+      |                                                           |
+      |                                                           uint8_t {aka unsigned char}
+../Core/Src/freertos.c:166:59: note: expected 'const char *' but argument is of type 'uint8_t' {aka 'unsigned char'}
+../Core/Src/freertos.c:166:35: warning: passing argument 2 of 'HAL_UART_Transmit_IT' makes pointer from integer without a cast [-Wint-conversion]
+  166 |     HAL_UART_Transmit_IT(&huart2, flightStateData, strlen(flightStateData));
+      |                                   ^~~~~~~~~~~~~~~
+      |                                   |
+      |                                   uint8_t {aka unsigned char}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/freertos.c:23:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:724:82: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  724 | HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50280	    484	  21388	  72152	  119d8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+14:33:16 **** Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50280	    484	  21388	  72152	  119d8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+14:35:44 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50280	    484	  21388	  72152	  119d8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+14:41:22 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: passing argument 1 of 'sprintf' makes pointer from integer without a cast [-Wint-conversion]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t {aka unsigned char}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t' {aka 'unsigned char'}
+../Core/Src/freertos.c:166:35: warning: passing argument 2 of 'HAL_UART_Transmit_IT' makes pointer from integer without a cast [-Wint-conversion]
+  166 |     HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
+      |                                   ^~~~~~~~~~~~~~~
+      |                                   |
+      |                                   uint8_t {aka unsigned char}
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/freertos.c:23:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:724:82: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+  724 | HAL_StatusTypeDef HAL_UART_Transmit_IT(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size);
+      |                                                                   ~~~~~~~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+14:44:28 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/freertos.c:165:32: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |                                ^
+../Core/Src/freertos.c:165:5: note: 'sprintf' output between 2 and 4 bytes into a destination of size 1
+  165 |     sprintf(flightStateData,"%d",flightState);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+15:11:56 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+15:25:27 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+16:27:02 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+18:01:10 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+18:02:37 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+18:08:12 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/freertos.c:165:32: warning: '
+   ' directive writing 1 byte into a region of size 0 [-Wformat-overflow=]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |                                ^~
+../Core/Src/freertos.c:165:5: note: 'sprintf' output between 3 and 5 bytes into a destination of size 1
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+18:15:02 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+18:19:28 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/freertos.c:165:34: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |                                  ^
+../Core/Src/freertos.c:165:5: note: 'sprintf' output between 3 and 5 bytes into a destination of size 2
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+19:31:22 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+20:34:05 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:64:1: warning: return type defaults to 'int' [-Wimplicit-int]
+   64 | HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:64:1: warning: conflicting types for 'HAL_UART_RxCpltCallback'
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:6: note: previous declaration of 'HAL_UART_RxCpltCallback' with type 'void(UART_HandleTypeDef *)' {aka 'void(struct __UART_HandleTypeDef *)'}
+  748 | void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:136:30: warning: statement with no effect [-Wunused-value]
+  136 |     /* USER CODE END WHILE */""
+      |                              ^~
+../Core/Src/main.c:136:32: error: expected ';' before '}' token
+  136 |     /* USER CODE END WHILE */""
+      |                                ^
+      |                                ;
+......
+  139 |   }
+      |   ~                             
+make: *** [Core/Src/subdir.mk:55: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+20:34:22 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:64:1: warning: return type defaults to 'int' [-Wimplicit-int]
+   64 | HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:64:1: warning: conflicting types for 'HAL_UART_RxCpltCallback'
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:6: note: previous declaration of 'HAL_UART_RxCpltCallback' with type 'void(UART_HandleTypeDef *)' {aka 'void(struct __UART_HandleTypeDef *)'}
+  748 | void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+21:57:03 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+22:43:41 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+16:12:45 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 

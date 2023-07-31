@@ -1,0 +1,7 @@
+../Core/Src/checking.c:6:9:checkLiftoff	2
+../Core/Src/checking.c:16:9:checkApogee	3
+../Core/Src/checking.c:27:9:checkMainParachute	2
+../Core/Src/checking.c:37:9:checkSeparationAltitude	2
+../Core/Src/checking.c:47:9:checkSteadyAltitude	2
+../Core/Src/checking.c:56:9:checkBeforeLanding	2
+../Core/Src/checking.c:66:9:checkLanding	3

@@ -1,0 +1,5 @@
+../Core/Src/system.c:13:6:parseData	1
+../Core/Src/system.c:23:6:parseKongrulData	1
+../Core/Src/system.c:31:6:readTime	2
+../Core/Src/system.c:42:6:altitudeApogee	2
+../Core/Src/system.c:51:6:velocityCalculated	2

@@ -1,0 +1,10 @@
+16:12:45 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+
+16:12:46 Build Finished. 0 errors, 0 warnings. (took 597ms)
+

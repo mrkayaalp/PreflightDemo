@@ -1,0 +1,5 @@
+../Core/Src/system.c:13:6:parseData	64	static
+../Core/Src/system.c:23:6:parseKongrulData	40	static
+../Core/Src/system.c:31:6:readTime	4	static
+../Core/Src/system.c:42:6:altitudeApogee	4	static
+../Core/Src/system.c:51:6:velocityCalculated	4	static

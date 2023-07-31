@@ -1,0 +1,7 @@
+../Core/Src/checking.c:6:9:checkLiftoff	4	static
+../Core/Src/checking.c:16:9:checkApogee	4	static
+../Core/Src/checking.c:27:9:checkMainParachute	4	static
+../Core/Src/checking.c:37:9:checkSeparationAltitude	4	static
+../Core/Src/checking.c:47:9:checkSteadyAltitude	4	static
+../Core/Src/checking.c:56:9:checkBeforeLanding	4	static
+../Core/Src/checking.c:66:9:checkLanding	4	static
