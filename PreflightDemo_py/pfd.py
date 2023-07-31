@@ -21,22 +21,16 @@ numbers = 0
 
         
         
-def readSerial():
+def readSerial(currentTick):
     global ser
-    try:
-        while True:
-            with open('serialRead.txt','a') as fs:
-                lineS = ser.readline()
-                lineS = lineS.decode('utf-8')
-                lineS = parseStatement(lineS) #bu kısımdan pek emin değilim
-                lineS = lineS.strip()
-                fs.write(f'Time:{currentTick} || State: ' + lineS + '\n')
+    with open('serialRead.txt','a') as fs:
+        lineS = ser.readline()
+        lineS = lineS.decode('utf-8')
+        lineS = parseStatement(lineS) #bu kısımdan pek emin değilim
+        lineS = lineS.strip()
+        fs.write(f'Time:{currentTick} || State: ' + lineS + '\n')
         
                 
-
-    except KeyboardInterrupt:
-        ser.close()
-        sys.exit(1)
 
 def parseStatement(line):
     match int(line): 
@@ -67,22 +61,22 @@ def main():
                     time.sleep(timeDiff)  #kongrulda saniye cinsinden veri aldık
 
                     ser.write(bytes(numbers_with_commas + '\n', 'utf-8'))
-                    #readSerial(currentTick)
+                    
 
-
+                readSerial(currentTick)
                 prevTick = currentTick
         
     except KeyboardInterrupt:
         ser.close()
         sys.exit(0)
 
-threadMain = threading.Thread(target=main)
-threadReadSerial = threading.Thread(target=readSerial)
+#threadMain = threading.Thread(target=main)
+#threadReadSerial = threading.Thread(target=readSerial)
+#
+#threadMain.start()
+#threadReadSerial.start()
 
-threadMain.start()
-threadReadSerial.start()
-
-#main()
+main()
 
 
 

@@ -422,3 +422,188 @@ arm-none-eabi-size   PreflightDemo_st.elf
   50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
 Finished building: default.size.stdout
  
+16:26:34 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-size   PreflightDemo_st.elf 
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+16:34:03 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/checking.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/checking.d" -MT"Core/Src/checking.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/checking.o"
+arm-none-eabi-gcc "../Core/Src/def.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/def.d" -MT"Core/Src/def.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/def.o"
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system.d" -MT"Core/Src/system.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system.o"
+../Core/Src/system.c: In function 'parseData':
+../Core/Src/system.c:15:5: warning: implicit declaration of function 'sscanf' [-Wimplicit-function-declaration]
+   15 |     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+      |     ^~~~~~
+../Core/Src/system.c:2:1: note: include '<stdio.h>' or provide a declaration of 'sscanf'
+    1 | #include "system.h"
+  +++ |+#include <stdio.h>
+    2 | 
+../Core/Src/system.c:15:5: warning: incompatible implicit declaration of built-in function 'sscanf' [-Wbuiltin-declaration-mismatch]
+   15 |     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+      |     ^~~~~~
+../Core/Src/system.c:15:5: note: include '<stdio.h>' or provide a declaration of 'sscanf'
+../Core/Src/system.c:15:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   15 |     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+      |            ^~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/system.c:15:12: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/system.c: In function 'parseKongrulData':
+../Core/Src/system.c:25:5: warning: incompatible implicit declaration of built-in function 'sscanf' [-Wbuiltin-declaration-mismatch]
+   25 |     sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
+      |     ^~~~~~
+../Core/Src/system.c:25:5: note: include '<stdio.h>' or provide a declaration of 'sscanf'
+../Core/Src/system.c:25:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   25 |     sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
+      |            ^~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/system.c:25:12: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/system.c: In function 'velocityCalculated':
+../Core/Src/system.c:75:12: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   75 |     return 0;
+      |            ^
+../Core/Src/system.c:51:6: note: declared here
+   51 | void velocityCalculated()
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:64:1: warning: return type defaults to 'int' [-Wimplicit-int]
+   64 | HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:64:1: warning: conflicting types for 'HAL_UART_RxCpltCallback'
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:6: note: previous declaration of 'HAL_UART_RxCpltCallback' with type 'void(UART_HandleTypeDef *)' {aka 'void(struct __UART_HandleTypeDef *)'}
+  748 | void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/freertos.c:165:34: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |                                  ^
+../Core/Src/freertos.c:165:5: note: 'sprintf' output between 3 and 5 bytes into a destination of size 2
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50248	    484	  21388	  72120	  119b8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
+16:34:50 **** Incremental Build of configuration Debug for project PreflightDemo_st ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/checking.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/checking.d" -MT"Core/Src/checking.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/checking.o"
+arm-none-eabi-gcc "../Core/Src/def.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/def.d" -MT"Core/Src/def.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/def.o"
+arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/system.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system.d" -MT"Core/Src/system.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system.o"
+../Core/Src/system.c: In function 'parseData':
+../Core/Src/system.c:15:5: warning: implicit declaration of function 'sscanf' [-Wimplicit-function-declaration]
+   15 |     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+      |     ^~~~~~
+../Core/Src/system.c:2:1: note: include '<stdio.h>' or provide a declaration of 'sscanf'
+    1 | #include "system.h"
+  +++ |+#include <stdio.h>
+    2 | 
+../Core/Src/system.c:15:5: warning: incompatible implicit declaration of built-in function 'sscanf' [-Wbuiltin-declaration-mismatch]
+   15 |     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+      |     ^~~~~~
+../Core/Src/system.c:15:5: note: include '<stdio.h>' or provide a declaration of 'sscanf'
+../Core/Src/system.c:15:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   15 |     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+      |            ^~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/system.c:15:12: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/system.c: In function 'parseKongrulData':
+../Core/Src/system.c:25:5: warning: incompatible implicit declaration of built-in function 'sscanf' [-Wbuiltin-declaration-mismatch]
+   25 |     sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
+      |     ^~~~~~
+../Core/Src/system.c:25:5: note: include '<stdio.h>' or provide a declaration of 'sscanf'
+../Core/Src/system.c:25:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+   25 |     sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
+      |            ^~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+../Core/Src/system.c:25:12: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/system.c: In function 'velocityCalculated':
+../Core/Src/system.c:75:12: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   75 |     return 0;
+      |            ^
+../Core/Src/system.c:51:6: note: declared here
+   51 | void velocityCalculated()
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:64:1: warning: return type defaults to 'int' [-Wimplicit-int]
+   64 | HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:64:1: warning: conflicting types for 'HAL_UART_RxCpltCallback'
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:748:6: note: previous declaration of 'HAL_UART_RxCpltCallback' with type 'void(UART_HandleTypeDef *)' {aka 'void(struct __UART_HandleTypeDef *)'}
+  748 | void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/freertos.c: In function 'checkStateEntry':
+../Core/Src/freertos.c:165:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:32:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   31 | #include "usart.h"
+  +++ |+#include <stdio.h>
+   32 | 
+../Core/Src/freertos.c:165:5: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~
+../Core/Src/freertos.c:165:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/freertos.c:165:13: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |             ^~~~~~~~~~~~~~~
+      |             |
+      |             uint8_t * {aka unsigned char *}
+../Core/Src/freertos.c:165:13: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/freertos.c:165:34: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |                                  ^
+../Core/Src/freertos.c:165:5: note: 'sprintf' output between 3 and 5 bytes into a destination of size 2
+  165 |     sprintf(flightStateData,"%d\n",flightState);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "PreflightDemo_st.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\PreflightDemo_st_t\PreflightDemo_st\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="PreflightDemo_st.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: PreflightDemo_st.elf
+ 
+arm-none-eabi-size   PreflightDemo_st.elf 
+arm-none-eabi-objdump -h -S  PreflightDemo_st.elf  > "PreflightDemo_st.list"
+   text	   data	    bss	    dec	    hex	filename
+  50264	    484	  21388	  72136	  119c8	PreflightDemo_st.elf
+Finished building: default.size.stdout
+ 
+Finished building: PreflightDemo_st.list
+ 
