@@ -16,13 +16,15 @@ def openSerial():
 
 ser = openSerial()
 currentTick = 0
-numbers = 0
+timeDiff = 0
 
 
         
         
 def readSerial():
     global ser
+    global currentTick
+    global timeDiff
     try:
         while True:
             with open('serialRead.txt','a') as fs:
@@ -31,6 +33,7 @@ def readSerial():
                 lineS = parseStatement(lineS) #bu kısımdan pek emin değilim
                 lineS = lineS.strip()
                 fs.write(f'Time:{currentTick} || State: ' + lineS + '\n')
+                #time.sleep(timeDiff) #bu beklemeyi nasıl yerleştireceğimiz konusunda emin değilim
         
                 
 
@@ -52,6 +55,8 @@ def parseStatement(line):
     
 def main():
     global ser
+    global currentTick
+    global timeDiff
     try:
         with open('kongrul1.txt','r') as f:
             prevTick = None
@@ -67,7 +72,6 @@ def main():
                     time.sleep(timeDiff)  #kongrulda saniye cinsinden veri aldık
 
                     ser.write(bytes(numbers_with_commas + '\n', 'utf-8'))
-                    #readSerial(currentTick)
 
 
                 prevTick = currentTick
@@ -79,8 +83,11 @@ def main():
 threadMain = threading.Thread(target=main)
 threadReadSerial = threading.Thread(target=readSerial)
 
+
 threadMain.start()
 threadReadSerial.start()
+
+#bu kısma terkar bakılacak
 
 #main()
 
