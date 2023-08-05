@@ -1,0 +1,471 @@
+/* USER CODE BEGIN Header */
+/**
+ ******************************************************************************
+ * File Name          : freertos.c
+ * Description        : Code for freertos applications
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2023 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
+/* USER CODE END Header */
+
+/* Includes ------------------------------------------------------------------*/
+#include "FreeRTOS.h"
+
+#include "cmsis_os.h"
+#include "main.h"
+#include "task.h"
+
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+#include "bmp280.h"
+#include "checking.h"
+#include "i2c.h"
+#include "system.h"
+#include "usart.h"
+
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+int dataCollectingTime = 0;
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN Variables */
+uint8_t flightStateData[2];
+
+/* USER CODE END Variables */
+/* Definitions for defaultTask */
+osThreadId_t defaultTaskHandle;
+const osThreadAttr_t defaultTask_attributes = {
+    .name = "defaultTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
+};
+/* Definitions for runCommand */
+osThreadId_t runCommandHandle;
+const osThreadAttr_t runCommand_attributes = {
+    .name = "runCommand",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
+};
+/* Definitions for sendTelemetry */
+osThreadId_t sendTelemetryHandle;
+const osThreadAttr_t sendTelemetry_attributes = {
+    .name = "sendTelemetry",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
+};
+/* Definitions for checkState */
+osThreadId_t checkStateHandle;
+const osThreadAttr_t checkState_attributes = {
+    .name = "checkState",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityRealtime,
+};
+/* Definitions for someLoop */
+osThreadId_t someLoopHandle;
+const osThreadAttr_t someLoop_attributes = {
+    .name = "someLoop",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityHigh,
+};
+/* Definitions for sdLog */
+osThreadId_t sdLogHandle;
+const osThreadAttr_t sdLog_attributes = {
+    .name = "sdLog",
+    .stack_size = 1024 * 4,
+    .priority = (osPriority_t)osPriorityLow,
+};
+/* Definitions for dataTask */
+osThreadId_t dataTaskHandle;
+const osThreadAttr_t dataTask_attributes = {
+    .name = "dataTask",
+    .stack_size = 1024 * 4,
+    .priority = (osPriority_t)osPriorityRealtime,
+};
+
+/* Private function prototypes -----------------------------------------------*/
+/* USER CODE BEGIN FunctionPrototypes */
+
+/* USER CODE END FunctionPrototypes */
+
+void StartDefaultTask(void *argument);
+void runCommandEntry(void *argument);
+void sendTelemetryEntry(void *argument);
+void checkStateEntry(void *argument);
+void someLoopEntry(void *argument);
+void sdLogEnrty(void *argument);
+void dataTaskEntry(void *argument);
+
+void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
+/**
+ * @brief  FreeRTOS initialization
+ * @param  None
+ * @retval None
+ */
+void MX_FREERTOS_Init(void)
+{
+    /* USER CODE BEGIN Init */
+
+    /* USER CODE END Init */
+
+    /* USER CODE BEGIN RTOS_MUTEX */
+    /* add mutexes, ... */
+    /* USER CODE END RTOS_MUTEX */
+
+    /* USER CODE BEGIN RTOS_SEMAPHORES */
+    /* add semaphores, ... */
+    /* USER CODE END RTOS_SEMAPHORES */
+
+    /* USER CODE BEGIN RTOS_TIMERS */
+    /* start timers, add new ones, ... */
+    /* USER CODE END RTOS_TIMERS */
+
+    /* USER CODE BEGIN RTOS_QUEUES */
+    /* add queues, ... */
+    /* USER CODE END RTOS_QUEUES */
+
+    /* Create the thread(s) */
+    /* creation of defaultTask */
+    defaultTaskHandle =
+        osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
+    /* creation of runCommand */
+    runCommandHandle =
+        osThreadNew(runCommandEntry, NULL, &runCommand_attributes);
+
+    /* creation of sendTelemetry */
+    sendTelemetryHandle =
+        osThreadNew(sendTelemetryEntry, NULL, &sendTelemetry_attributes);
+
+    /* creation of checkState */
+    checkStateHandle =
+        osThreadNew(checkStateEntry, NULL, &checkState_attributes);
+
+    /* creation of someLoop */
+    someLoopHandle = osThreadNew(someLoopEntry, NULL, &someLoop_attributes);
+
+    /* creation of sdLog */
+    sdLogHandle = osThreadNew(sdLogEnrty, NULL, &sdLog_attributes);
+
+    /* creation of dataTask */
+    dataTaskHandle = osThreadNew(dataTaskEntry, NULL, &dataTask_attributes);
+
+    /* USER CODE BEGIN RTOS_THREADS */
+    /* add threads, ... */
+    /* USER CODE END RTOS_THREADS */
+
+    /* USER CODE BEGIN RTOS_EVENTS */
+    /* add events, ... */
+    /* USER CODE END RTOS_EVENTS */
+}
+
+/* USER CODE BEGIN Header_StartDefaultTask */
+/**
+ * @brief  Function implementing the defaultTask thread.
+ * @param  argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_StartDefaultTask */
+void StartDefaultTask(void *argument)
+{
+    /* USER CODE BEGIN StartDefaultTask */
+    /* Infinite loop */
+    for (;;)
+    {
+        osDelay(100);
+    }
+    /* USER CODE END StartDefaultTask */
+}
+
+/* USER CODE BEGIN Header_runCommandEntry */
+/**
+ * @brief Function implementing the runCommand thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_runCommandEntry */
+void runCommandEntry(void *argument)
+{
+    /* USER CODE BEGIN runCommandEntry */
+    /* Infinite loop */
+    for (;;)
+    {
+        //        debugRecoverTime = HAL_GetTick();
+        //        if (debugRecoverTime > 10000 && debugRecoverTime < 11000) {
+        //            buzzer(1);
+        //            led(1);
+        //            osDelay(1000);
+        //            buzzer(0);
+        //            led(0);
+        //            osDelay(500);
+        //            buzzer(1);
+        //            led(1);
+        //            osDelay(500);
+        //            buzzer(0);
+        //            led(0);
+        //            HAL_GPIO_WritePin(DRAGP_GPIO_Port, DRAGP_Pin,
+        //            GPIO_PIN_SET); HAL_GPIO_WritePin(MAINP_GPIO_Port,
+        //            MAINP_Pin, GPIO_PIN_SET);
+        //        }
+
+        osDelay(1);
+    }
+    /* USER CODE END runCommandEntry */
+}
+
+/* USER CODE BEGIN Header_sendTelemetryEntry */
+/**
+ * @brief Function implementing the sendTelemetry thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_sendTelemetryEntry */
+void sendTelemetryEntry(void *argument)
+{
+    /* USER CODE BEGIN sendTelemetryEntry */
+    /* Infinite loop */
+    for (;;)
+    {
+//        createTxString();
+//        HAL_UART_Transmit(&huart2, (uint8_t *)tlcTxString, strlen(tlcTxString),
+//                          100);
+//        HAL_UART_Transmit(&huart4, (uint8_t *)tlcTxString, strlen(tlcTxString),
+//                          100);
+        osDelay(10);
+    }
+    /* USER CODE END sendTelemetryEntry */
+}
+
+/* USER CODE BEGIN Header_checkStateEntry */
+/**
+ * @brief Function implementing the checkState thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_checkStateEntry */
+void checkStateEntry(void *argument)
+{
+    /* USER CODE BEGIN checkStateEntry */
+    /* Infinite loop */
+    for (;;)
+    {
+        if(time.current != time.prevTime){
+    		sprintf(flightStateData, "%d\n", flightState);
+    		HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
+    		time.prevTime = time.current;
+        }
+        switch (flightState)
+        {
+        case START:
+            if (checkLiftoff() == 1)
+            {
+                time.liftoffTime = HAL_GetTick();
+                flightState = AFTER_LIFTOFF;
+            }
+            break;
+
+        case AFTER_LIFTOFF:
+            if (checkBurnout() == 1)
+            {
+                time.burnoutTime = HAL_GetTick();
+                flightState = AFTER_BURNOUT;
+            }
+            break;
+
+        case AFTER_BURNOUT:
+            if (checkApogee() == 1)
+            {
+                time.apogeeTime = HAL_GetTick();
+                flightState = AFTER_APOGEE;
+                dragSchute(1);
+            }
+            break;
+
+        case AFTER_APOGEE:
+            if (checkMainParachute() == 1)
+            {
+                time.mainParachuteTime = HAL_GetTick();
+                flightState = AFTER_MAIN_PAR;
+                mainSchute(1);
+            }
+            break;
+
+        case AFTER_MAIN_PAR:
+            if (checkLanding() == 1)
+            {
+                time.landingTime = HAL_GetTick();
+                flightState = LANDED;
+            }
+            break;
+
+        case LANDED:
+            if (time.landingTime == 0.0f)
+            {
+                time.landingTime = time.current;
+            }
+            osDelay(10000); /* TODO: Something for saving power*/
+            break;
+
+        case FLIGHT_FAILURE:
+            osDelay(10000); /* TODO: Something for saving power*/
+            break;
+
+        default:
+            // DEBUG_PROFILE_X
+            break;
+        }
+        osDelay(1);
+    }
+    /* USER CODE END checkStateEntry */
+}
+
+/* USER CODE BEGIN Header_someLoopEntry */
+/**
+ * @brief Function implementing the someLoop thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_someLoopEntry */
+void someLoopEntry(void *argument)
+{
+    /* USER CODE BEGIN someLoopEntry */
+    /* Infinite loop */
+    for (;;)
+    {
+        //        createTxString();
+        //        HAL_UART_Transmit(&huart4, (uint8_t *)tlcTxString,
+        //        strlen(tlcTxString),
+        //                          100);
+        //        HAL_UART_Transmit(&huart2, (uint8_t *)tlcTxString,
+        //        strlen(tlcTxString),
+        //                          100);
+        osDelay(10);
+    }
+    /* USER CODE END someLoopEntry */
+}
+
+/* USER CODE BEGIN Header_sdLogEnrty */
+char buffer[400];
+// char buf[400];
+
+/**
+ * @brief Function implementing the sdLog thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_sdLogEnrty */
+void sdLogEnrty(void *argument)
+{
+    /* USER CODE BEGIN sdLogEnrty */
+    // initSD();
+    // fram_init();
+
+    int fram_flight_state = 0;
+    fram_flight_state = fram_read8(FRAM_FLIGHT_STATE_ADDR);
+    if (fram_flight_state == LANDED)
+    {
+        fram_flight_state = START;
+    }
+    if (fram_flight_state != START)
+    {
+        flightState = fram_flight_state;
+    }
+
+    float test_float = 0.0f;
+    int tick_t = 0;
+
+    // initSD();
+
+    //    fram_debug_data = fram_read8(FRAM_SYS_TICK_ADDR);
+    /* Infinite loop */
+    for (;;)
+    {
+        //    tick_t = HAL_GetTick();
+        //    sprintf((char *)buffer,
+        //            "Tick:%d, Altitude:%f, Pressure: %f, MaxAlt: %f, AccelX: %f, "
+        //            "AccelY: %f, AccelZ: %f, MagX %d, MagY %d, MagZ %d, GyroX: %f, "
+        //            "GyroY: %f, GyroZ: %f\n",
+        //            tick_t, altitude.altitude, altitude.pressure,
+        //            altitude.maxAltitude, accel.x, accel.y, accel.z, magnetoData.x,
+        //            magnetoData.y, magnetoData.z, gyro.x, gyro.y, gyro.z);
+        //    writeSD(buffer);
+        //
+        //    fram_write8(FRAM_FLIGHT_STATE_ADDR, flightState);
+        // writeSD(tlcTxString);
+        // fram_test8++;
+        // fram_write8(FRAM_SYS_TICK_ADDR, fram_test8);
+        // osDelay(10);
+
+        // fram_debug_data = fram_read8(FRAM_SYS_TICK_ADDR);
+
+        osDelay(1);
+    }
+    /* USER CODE END sdLogEnrty */
+}
+
+/* USER CODE BEGIN Header_dataTaskEntry */
+/**
+ * @brief Function implementing the dataTask thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_dataTaskEntry */
+void dataTaskEntry(void *argument)
+{
+    /* USER CODE BEGIN dataTaskEntry */
+    // int temp;
+    // temp = HAL_GetTick();
+    // initFilter();
+
+    // initBarometer();
+    // initIMU();
+    // initMagnetometer();,
+    //readData();
+
+    // dataCollectingTime = HAL_GetTick() - temp;
+    /* Infinite loop */
+    for (;;)
+    {
+        // temp = HAL_GetTick();
+        //
+        // readTime();
+        // readAltitude();
+        // readIMU();
+        // fusionProcess();
+        // readMagnetometer();
+        // HAL_GPIO_TogglePin(USERL_GPIO_Port, USERL_Pin);
+
+        //altitudeApogee();
+        //velocityCalculated();
+        // dataCollectingTime = HAL_GetTick() - temp;
+        osDelay(1);
+    }
+    /* USER CODE END dataTaskEntry */
+}
+
+/* Private application code --------------------------------------------------*/
+/* USER CODE BEGIN Application */
+
+/* USER CODE END Application */

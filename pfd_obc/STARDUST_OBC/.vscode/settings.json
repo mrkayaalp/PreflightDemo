@@ -1,0 +1,12 @@
+{
+  "files.associations": {
+    "bmp280.h": "c",
+    "i2c.h": "c",
+    "lis3mdl.h": "c",
+    "__locale": "c",
+    "freertos.h": "c",
+    "yrt_simplekalman.h": "c",
+    "usart.h": "c",
+    "checking.h": "c"
+  }
+}

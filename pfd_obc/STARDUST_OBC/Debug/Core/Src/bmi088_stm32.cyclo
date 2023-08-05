@@ -1,0 +1,2 @@
+../Core/Src/bmi088_stm32.c:58:8:stm32_i2c_write	1
+../Core/Src/bmi088_stm32.c:68:8:stm32_i2c_read	1

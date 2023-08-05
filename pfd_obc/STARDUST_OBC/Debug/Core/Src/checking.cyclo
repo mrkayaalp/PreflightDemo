@@ -1,0 +1,5 @@
+../Core/Src/checking.c:5:9:checkLiftoff	3
+../Core/Src/checking.c:16:9:checkBurnout	3
+../Core/Src/checking.c:27:9:checkApogee	6
+../Core/Src/checking.c:39:9:checkMainParachute	2
+../Core/Src/checking.c:49:9:checkLanding	4

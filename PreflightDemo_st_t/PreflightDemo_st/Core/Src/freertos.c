@@ -162,8 +162,11 @@ void checkStateEntry(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    sprintf(flightStateData,"%d\n",flightState);
-    HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
+	if(time.current != time.prevTime){
+	  sprintf(flightStateData,"%d\n",flightState);
+	  HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
+	  time.prevTime = time.current;
+	}
 
     switch (flightState)
     {

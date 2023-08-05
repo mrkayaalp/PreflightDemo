@@ -1,4 +1,4 @@
 ../Core/Src/freertos.c:93:6:MX_FREERTOS_Init	1
 ../Core/Src/freertos.c:141:6:StartDefaultTask	1
-../Core/Src/freertos.c:159:6:checkStateEntry	12
-../Core/Src/freertos.c:228:6:dataTaskEntry	1
+../Core/Src/freertos.c:159:6:checkStateEntry	13
+../Core/Src/freertos.c:231:6:dataTaskEntry	1

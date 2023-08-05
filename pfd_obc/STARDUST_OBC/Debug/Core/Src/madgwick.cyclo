@@ -1,0 +1,7 @@
+../Core/Src/madgwick.c:34:14:invSqrt	1
+../Core/Src/madgwick.c:44:19:madgwick_init	2
+../Core/Src/madgwick.c:63:11:madgwick_set_beta	1
+../Core/Src/madgwick.c:71:11:madgwick_set_sample_frequency	1
+../Core/Src/madgwick.c:80:11:madgwick_get_quaternion	1
+../Core/Src/madgwick.c:92:11:madgwick_update_6dof	4
+../Core/Src/madgwick.c:180:11:madgwick_update_9dof	7

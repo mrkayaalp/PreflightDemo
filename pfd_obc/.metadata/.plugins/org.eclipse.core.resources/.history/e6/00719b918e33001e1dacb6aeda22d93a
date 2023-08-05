@@ -1,0 +1,631 @@
+#include <system.h>
+
+#include "bmi088.h"
+#include "bmi088_stm32.h"
+#include "bmi08x.h"
+#include "cmsis_os.h"
+#include "crc.h"
+#include "custom_bus.h"
+#include "fatfs.h"
+#include "ff.h"
+#include "madgwick.h"
+#include "usart.h"
+
+uint8_t flightState = START;
+uint8_t errorState;
+uint8_t controlDebugState;
+char tlcTxString[STRING_BUFFER_SIZE];
+char tlcRxString[STRING_BUFFER_SIZE];
+
+char logString[STRING_BUFFER_SIZE];
+
+char pccRxString[STRING_BUFFER_SIZE];
+
+Time time;
+Accel accel;
+Gyro gyro;
+Magnetometer mag;
+Altitude altitude;
+Velocity velocity;
+Angle angle;
+Gps gps;
+
+Time tlcTime;
+
+uint8_t tlcStatus;
+uint8_t bpcStatus;
+extern rxBuffer;
+
+LIS3MDL_Object_t magnetoObj;
+LIS3MDL_Axes_t magnetoData;
+
+int pccTime = 0;
+float pccTemp = 0;
+float pccVoltage = 0;
+
+BMP280_HandleTypedef bmp280;
+float pressure, temperature, humidity;
+
+#define PI 3.14159265358979323846f
+madgwick_handle_t madgwick_handle;
+madgwick_quat_data_t quat_data;
+#define MADGWICK_BETA 5.001f
+#define MADGWICK_SAMPLE_RATE 100.0f
+#define DEG2RAD PI / 180.0f
+
+yrt_simpleKalman_t accelXKalman;
+yrt_simpleKalman_t accelYKalman;
+yrt_simpleKalman_t accelZKalman;
+
+yrt_simpleKalman_t gyroXKalman;
+yrt_simpleKalman_t gyroYKalman;
+yrt_simpleKalman_t gyroZKalman;
+
+yrt_simpleKalman_t magXKalman;
+yrt_simpleKalman_t magYKalman;
+yrt_simpleKalman_t magZKalman;
+
+yrt_simpleKalman_t barometerKalman;
+
+madgwick_cfg_t madgwick_cfg = {
+    .beta = MADGWICK_BETA,
+    .sample_freq = MADGWICK_SAMPLE_RATE,
+};
+
+struct bmi08x_dev bmiDev = {
+    .accel_chip_id = 0x1E,
+    .gyro_chip_id = 0x0F,
+    .accel_id = 0x18, // pg 35
+    .gyro_id = 0x68,
+    .intf = BMI08X_I2C_INTF,
+    .read = &stm32_i2c_read,   // user_spi_read
+    .write = &stm32_i2c_write, // user_spi_write
+    .delay_ms = &osDelay,      // user_delay_milli_sec
+                               //.accel_cfg.odr = BMI08X_ACCEL_ODR_400_HZ,
+                               //.accel_cfg.bw = BMI08X_ACCEL_BW_NORMAL,
+                               //.accel_cfg.range = BMI088_ACCEL_RANGE_3G
+    .accel_cfg =
+        {
+            .odr = BMI08X_ACCEL_ODR_100_HZ,
+            .range = BMI088_ACCEL_RANGE_24G,
+            .bw = BMI08X_ACCEL_BW_NORMAL,
+            .power = BMI08X_ACCEL_PM_ACTIVE,
+        },
+    .gyro_cfg =
+        {
+            .odr = BMI08X_GYRO_BW_12_ODR_100_HZ,
+            .range = BMI08X_GYRO_RANGE_1000_DPS,
+            .bw = BMI08X_GYRO_BW_47_ODR_400_HZ,
+            .power = BMI08X_GYRO_PM_NORMAL,
+        }
+
+};
+struct bmi08x_sensor_data user_accel_bmi088;
+struct bmi08x_sensor_data user_gyro_bmi088;
+
+int id;
+int ret;
+
+FRESULT res;                                  /* FatFs function common result code */
+uint32_t byteswritten, bytesread;             /* File write/read counts */
+uint8_t wtext[] = "STM32 FATFS works great!"; /* File write buffer */
+uint8_t rtext[512];                           /* File read buffer */
+
+void openingThemeSong(uint32_t time)
+{
+    buzzer(1);
+    led(1);
+    HAL_Delay(time / 5);
+    buzzer(0);
+    led(0);
+    HAL_Delay(time / 6);
+    buzzer(1);
+    led(1);
+    HAL_Delay(time / 4);
+    buzzer(0);
+    led(0);
+    HAL_Delay(time / 2);
+    buzzer(1);
+    led(1);
+    HAL_Delay(time / 4);
+    buzzer(0);
+    led(0);
+}
+
+void sdErrorHandler()
+{
+    buzzer(1);
+    led(1);
+    HAL_Delay(500);
+    buzzer(0);
+    led(0);
+    HAL_Delay(150);
+    buzzer(1);
+    led(1);
+    HAL_Delay(250);
+    buzzer(0);
+    led(0);
+}
+
+// void parseData(uint8_t *data)
+//{
+//     sscanf(data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+//            &bpc.tick, &bpc.altitude,
+//            &bpc.pressure, &bpc.maxAltitude, &bpc.accel.x,
+//            &bpc.accel.y, &bpc.accel.z, &bpc.mag.x,
+//            &bpc.mag.y, &bpc.mag.z,
+//            &bpc.gyro.x, &bpc.gyro.y, &bpc.gyro.z);
+// }
+
+void parseKongrulData(uint8_t *data)
+{
+    sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
+           &altitude.altitude, &velocity.verticalVelocity,
+           &altitude.temperature, &altitude.humidity,
+           &gps.latitude, &gps.longtitude, &time.current);
+}
+
+void altitudeApogee()
+{
+    altitude.diffToMax = altitude.maxAltitude - altitude.altitude;
+    if (altitude.altitude > altitude.maxAltitude)
+    {
+        altitude.maxAltitude = altitude.altitude;
+    }
+}
+
+void readData()
+{
+    HAL_UART_Receive_IT(&huart2, rxBuffer, 1);
+}
+
+void velocityCalculated()
+{
+    altitude.prevAltitude = altitude.altitude;
+
+    // calculate vertical velocity m/s
+    velocity.timeDiffVertical =
+        (time.current - velocity.prevTimeVertical) / 1000.0f;
+
+    if (velocity.timeDiffVertical >
+        1.f)
+    { // Dikey hizi sagli olcmke icin bekleme
+
+        velocity.prevTimeVertical = time.current;
+        /*  (+) ise cikiyorsun (-) ise iniyorsun  */
+        // 									Bura
+        // santimetredir
+        // .
+        velocity.verticalVelocityCalculated =
+            (altitude.altitude - altitude.prevAltitudeForVelocity) /
+            (velocity.timeDiffVertical);
+
+        altitude.prevAltitudeForVelocity = altitude.altitude;
+    }
+
+    return 0;
+}
+
+void readTime()
+{
+    time.timeDifference = (time.current - time.prevTime);
+    time.prevTime = time.current;
+
+    if (flightState > AFTER_LIFTOFF)
+    {
+        time.flightTime = (time.current - time.liftoffTime) / 1000.0;
+    }
+}
+
+static float calculateAltitude(float p, float pi)
+{
+    p = p / 100;
+    pi = pi / 100;
+    float alt = (44330 * (1.0 - pow(p / pi, 0.1903)));
+    return alt;
+}
+
+int initBarometer()
+{
+    bmp280_init_default_params(&bmp280.params);
+    bmp280.addr = BMP280_I2C_ADDRESS_1;
+    bmp280.i2c = &hi2c1;
+    while (!bmp280_init(&bmp280, &bmp280.params))
+    {
+        HAL_Delay(2000);
+    }
+    bool bme280p = bmp280.id == BME280_CHIP_ID;
+    HAL_Delay(1000);
+
+    for (int i = 0; i < 250; i++)
+    {
+        bmp280_read_float(&bmp280, &temperature, &pressure, &humidity);
+        altitude.basePressure += pressure / 100;
+        HAL_Delay(2);
+    }
+
+    altitude.basePressure /= 250;
+
+    return 1;
+}
+
+int readBarometer()
+{
+    bmp280_read_float(&bmp280, &temperature, &pressure, &humidity);
+    altitude.pressure = pressure / 100;
+
+    altitude.temperature = temperature;
+
+    return 1;
+}
+
+int readAltitude()
+{
+    readBarometer();
+
+    altitude.altitude =
+        calculateAltitude(altitude.pressure, altitude.basePressure);
+
+    altitude.altitude =
+        yrt_simpleKalman_updateEstimate(&barometerKalman, altitude.altitude);
+
+    /* diif (-) ise cikiyorsun (+) ise iniyorsun  */
+    altitude.diffToMax = altitude.maxAltitude - altitude.altitude;
+
+    if (altitude.altitude > altitude.maxAltitude)
+    {
+        altitude.maxAltitude = altitude.altitude;
+    }
+
+    altitude.prevAltitude = altitude.altitude;
+
+    // calculate vertical velocity m/s
+    velocity.timeDiffVertical =
+        (HAL_GetTick() - velocity.prevTimeVertical) / 1000.0f;
+
+    // time diff must be greater than 0.3 sec
+    if (velocity.timeDiffVertical > 0.3)
+    {
+        velocity.verticalVelocity =
+            (altitude.altitude - altitude.prevAltitude) /
+            velocity.timeDiffVertical;
+        velocity.prevTimeVertical = HAL_GetTick();
+    }
+
+    if (velocity.verticalVelocity > velocity.maxVerticalVelocity)
+    {
+        velocity.maxVerticalVelocity = velocity.verticalVelocity;
+    }
+
+    return 0;
+}
+
+int initIMU()
+{
+    ret = bmi088_init(&bmiDev);
+
+    ret = bmi08a_set_power_mode(&bmiDev);
+    ret = bmi08g_set_power_mode(&bmiDev);
+
+    ret = bmi08a_set_meas_conf(&bmiDev);
+    ret = bmi08g_set_meas_conf(&bmiDev);
+
+    madgwick_handle = madgwick_init(&madgwick_cfg);
+
+    return ret;
+}
+
+int readIMU()
+{
+    ret = bmi08a_get_data(&user_accel_bmi088, &bmiDev);
+    ret = bmi08g_get_data(&user_gyro_bmi088, &bmiDev);
+
+    accel.x = (float)user_accel_bmi088.x / 1000;
+    accel.y = (float)user_accel_bmi088.y / 1000;
+    accel.z = (float)user_accel_bmi088.z / 1000;
+
+    gyro.x = (float)user_gyro_bmi088.x / 1000;
+    gyro.y = (float)user_gyro_bmi088.y / 1000;
+    gyro.z = (float)user_gyro_bmi088.z / 1000;
+
+    accel.x = yrt_simpleKalman_updateEstimate(&accelXKalman, accel.x);
+    accel.y = yrt_simpleKalman_updateEstimate(&accelYKalman, accel.y);
+    accel.z = yrt_simpleKalman_updateEstimate(&accelZKalman, accel.z);
+
+    gyro.x = yrt_simpleKalman_updateEstimate(&gyroXKalman, gyro.x);
+    gyro.y = yrt_simpleKalman_updateEstimate(&gyroYKalman, gyro.y);
+    gyro.z = yrt_simpleKalman_updateEstimate(&gyroZKalman, gyro.z);
+
+    accel.absG = sqrt(pow(accel.x, 2) + pow(accel.y, 2) + pow(accel.z, 2));
+    if (accel.absG > accel.maxG)
+    {
+        accel.maxG = accel.absG;
+    }
+
+    // calculate true velocity m/s from accelerometer
+    velocity.timeDiffTrue = (HAL_GetTick() - velocity.prevTimeTrue) / 1000.0f;
+
+    // time diff must be greater than 0.3 sec
+    velocity.trueVelocity =
+        (accel.absG - accel.prevAbsG) / velocity.timeDiffTrue;
+    velocity.prevTimeTrue = HAL_GetTick();
+
+    if (velocity.trueVelocity > velocity.maxTrueVelocity)
+    {
+        velocity.maxTrueVelocity = velocity.trueVelocity;
+    }
+
+    accel.prevAbsG = accel.absG;
+
+    accel.prev_x = accel.x;
+    accel.prev_y = accel.y;
+    accel.prev_z = accel.z;
+
+    gyro.prev_x = gyro.x;
+    gyro.prev_y = gyro.y;
+    gyro.prev_z = gyro.z;
+
+    return ret;
+}
+
+static void quatToEuler(float *q, float *euler)
+{
+    float sinr_cosp = 2 * (q[0] * q[1] + q[2] * q[3]);
+    float cosr_cosp = 1 - 2 * (q[1] * q[1] + q[2] * q[2]);
+    euler[0] = atan2(sinr_cosp, cosr_cosp);
+    euler[0] = euler[0] * 180 / M_PI;
+
+    float sinp = 2 * (q[0] * q[2] - q[3] * q[1]);
+    if (fabs(sinp) >= 1)
+        euler[1] =
+            copysign(M_PI / 2, sinp); /* use 90 degrees if out of range */
+    else
+        euler[1] = asin(sinp);
+    euler[1] = euler[1] * 180 / M_PI;
+
+    float siny_cosp = 2 * (q[0] * q[3] + q[1] * q[2]);
+    float cosy_cosp = 1 - 2 * (q[2] * q[2] + q[3] * q[3]);
+    euler[2] = atan2(siny_cosp, cosy_cosp);
+
+    // yaw 0-360
+    if (euler[2] < 0)
+    {
+        euler[2] += 2 * M_PI;
+    }
+    euler[2] = euler[2] * 180 / M_PI;
+}
+
+int fusionProcess()
+{
+    madgwick_update_9dof(madgwick_handle, gyro.x * DEG2RAD, gyro.y * DEG2RAD,
+                         gyro.z * DEG2RAD, accel.x, accel.y, accel.z, mag.x,
+                         mag.y, mag.z);
+    madgwick_get_quaternion(madgwick_handle, &quat_data);
+
+    float euler[3];
+    float q[4] = {quat_data.q0, quat_data.q1, quat_data.q2, quat_data.q3};
+    quatToEuler(q, euler);
+    angle.roll = euler[0];
+    angle.pitch = euler[1];
+    angle.yaw = euler[2];
+}
+
+int initMagnetometer()
+{
+    magnetoObj.IO.BusType = LIS3MDL_I2C_BUS;
+    magnetoObj.IO.Address = LIS3MDL_I2C_ADD_L;
+    magnetoObj.IO.Init = &BSP_I2C2_Init;
+    magnetoObj.IO.DeInit = &BSP_I2C2_DeInit;
+    magnetoObj.IO.ReadReg = &BSP_I2C2_ReadReg;
+    magnetoObj.IO.WriteReg = &BSP_I2C2_WriteReg;
+    magnetoObj.IO.GetTick = &BSP_GetTick;
+    magnetoObj.IO.Delay = &osDelay;
+
+    magnetoObj.mag_is_enabled = 1;
+
+    // if (LIS3MDL_RegisterBusIO(&magnetoObj, &magnetoObj.IO) != LIS3MDL_OK) {
+    //     return -1;
+    // }
+
+    ret = LIS3MDL_RegisterBusIO(&magnetoObj, &magnetoObj.IO);
+    ret = LIS3MDL_MAG_Enable(&magnetoObj);
+
+    ret = LIS3MDL_Init(&magnetoObj);
+    ret = lis3mdl_operating_mode_set(&magnetoObj, LIS3MDL_CONTINUOUS_MODE);
+    ret = LIS3MDL_MAG_SetFullScale(&magnetoObj, LIS3MDL_4_GAUSS);
+    ret = LIS3MDL_MAG_SetOutputDataRate(&magnetoObj, LIS3MDL_UHP_80Hz);
+
+    return 0;
+}
+
+int readMagnetometer()
+{
+    ret = LIS3MDL_MAG_GetAxes(&magnetoObj, &magnetoData);
+    mag.x = (float)magnetoData.x / 1000;
+    mag.y = (float)magnetoData.y / 1000;
+    mag.z = (float)magnetoData.z / 1000;
+
+    mag.x = yrt_simpleKalman_updateEstimate(&magXKalman, mag.x);
+    mag.y = yrt_simpleKalman_updateEstimate(&magYKalman, mag.y);
+    mag.z = yrt_simpleKalman_updateEstimate(&magZKalman, mag.z);
+
+    mag.prev_x = mag.x;
+    mag.prev_y = mag.y;
+    mag.prev_z = mag.z;
+
+    return ret;
+}
+
+void writeFRAM_Float(uint16_t address, float data)
+{
+    fram_writeFloat(address, data);
+}
+
+float readFRAM_Float(uint16_t address)
+{
+    float data = fram_readFloat(address);
+    return data;
+}
+
+void initSD()
+{
+    if (f_mount(&SDFatFS, (TCHAR const *)SDPath, 0) != FR_OK)
+    {
+        // Error_Handler();
+        sdErrorHandler();
+    }
+    else
+    {
+        // Open file for writing (Create)
+        if (f_open(&SDFile, "STM32.TXT", FA_CREATE_ALWAYS | FA_WRITE) !=
+            FR_OK)
+        {
+            // Error_Handler();
+            sdErrorHandler();
+        }
+        else
+        {
+            // Write to the text file
+            res = f_write(&SDFile, wtext, strlen((char *)wtext),
+                          (void *)&byteswritten);
+            if ((byteswritten == 0) || (res != FR_OK))
+            {
+                // Error_Handler();
+                sdErrorHandler();
+            }
+            else
+            {
+                f_close(&SDFile);
+            }
+        }
+    }
+    f_mount(&SDFatFS, (TCHAR const *)NULL, 0);
+    return;
+}
+
+void createTxString()
+{
+    // flightState, errorState, time, altitude, pressure, temperature, altitude,
+    // verticalVelocity, maxVerticalVelocity, angle.roll, angle.pitch,
+    // angle.yaw, accel.x, accel.y, accel.z, maxG, pccTemp, pccVoltage;
+    sprintf(tlcTxString,
+            "%d,%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n",
+            flightState, errorState, time.current, altitude.altitude,
+            altitude.pressure, altitude.temperature, altitude.altitude,
+            velocity.verticalVelocity, velocity.maxVerticalVelocity, angle.roll,
+            angle.pitch, angle.yaw, accel.x, accel.y, accel.z, accel.absG,
+            accel.maxG, pccTemp, pccVoltage);
+}
+
+void createLogString()
+{
+    // flightState, errorState, time, altitude, pressure, temperature, altitude,
+    // verticalVelocity, maxVerticalVelocity, angle.roll, angle.pitch,
+    // angle.yaw, accel.x, accel.y, accel.z, maxG, pccTemp, pccVoltage;
+    // gps.latitude, gps.longtitude, gps.altitude
+    sprintf(logString,
+            "FlihtState: %d, ErrorState: %d, Time: %f, Alt: %f, "
+            "Pressure: %f, Temperature: %f, VerticalVelocity: "
+            "%f, MaxVerVelocity: %f, AccelVelocity: %f, Roll: %f, Pitch: %f, "
+            "Yaw: %f, "
+            "AccelX: %f, AccelY: %f, AccelZ: %f, MaxG: %f, PccTemp: %f, "
+            "PccVoltage: %f, Latitude: %f, Longtitude: %f, GpsAlt: %f, MagX: "
+            "%f, MagY: %f, MagZ: %f\n",
+            flightState, errorState, time.current, altitude.altitude,
+            altitude.pressure, altitude.temperature, velocity.verticalVelocity,
+            velocity.maxVerticalVelocity, velocity.trueVelocity, angle.roll,
+            angle.pitch, angle.yaw, accel.x, accel.y, accel.z, accel.maxG,
+            pccTemp, pccVoltage, gps.latitude, gps.longtitude, gps.altitude,
+            mag.x, mag.y, mag.z);
+}
+
+void writeSD(char *data)
+{
+    res = f_open(&SDFile, "obc.txt", FA_OPEN_ALWAYS | FA_WRITE);
+    res = f_lseek(&SDFile, f_size(&SDFile));
+    res = f_write(&SDFile, data, strlen(data), (void *)&byteswritten);
+    res = f_close(&SDFile);
+    return;
+}
+
+void parseTlcString(char *data)
+{
+    // parse string with sscanf
+    // time(float), tlcStatus, bpcStatus, latitude, longitude, gps.altitude
+    sscanf(data, "%f,%d,%d,%f,%f,%f\n", &tlcTime, &tlcStatus, &bpcStatus,
+           &gps.latitude, &gps.longtitude, &gps.altitude);
+    return;
+}
+
+void parsePccString(char *data)
+{
+    // parse string with sscanf
+    // time, temp, voltage
+    sscanf(data, "%d,%f,%f", &pccTime, &pccTemp, &pccVoltage);
+    return;
+}
+
+void initFilter()
+{
+    yrt_simpleKalman_init(&accelXKalman, 1, 1, 0.25);
+    yrt_simpleKalman_init(&accelYKalman, 1, 1, 0.25);
+    yrt_simpleKalman_init(&accelZKalman, 1, 1, 0.25);
+
+    yrt_simpleKalman_init(&gyroXKalman, 1, 1, 0.25);
+    yrt_simpleKalman_init(&gyroYKalman, 1, 1, 0.25);
+    yrt_simpleKalman_init(&gyroZKalman, 1, 1, 0.25);
+
+    yrt_simpleKalman_init(&magXKalman, 1, 1, 0.5);
+    yrt_simpleKalman_init(&magYKalman, 1, 1, 0.5);
+    yrt_simpleKalman_init(&magZKalman, 1, 1, 0.5);
+
+    yrt_simpleKalman_init(&barometerKalman, 1, 1, 0.25);
+}
+
+void buzzer(uint8_t state)
+{
+    if (state)
+    {
+        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET);
+    }
+    else
+    {
+        HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET);
+    }
+}
+
+void led(uint8_t state)
+{
+    if (state)
+    {
+        HAL_GPIO_WritePin(USERL_GPIO_Port, USERL_Pin, GPIO_PIN_SET);
+    }
+    else
+    {
+        HAL_GPIO_WritePin(USERL_GPIO_Port, USERL_Pin, GPIO_PIN_RESET);
+    }
+}
+
+void dragSchute(uint8_t state)
+{
+    if (state == 1)
+    {
+        HAL_GPIO_WritePin(DRAGP_GPIO_Port, DRAGP_Pin, GPIO_PIN_SET);
+    }
+    else
+    {
+        HAL_GPIO_WritePin(DRAGP_GPIO_Port, DRAGP_Pin, GPIO_PIN_RESET);
+    }
+}
+
+void mainSchute(uint8_t state)
+{
+    if (state == 1)
+    {
+        HAL_GPIO_WritePin(MAINP_GPIO_Port, MAINP_Pin, GPIO_PIN_SET);
+    }
+    else
+    {
+        HAL_GPIO_WritePin(MAINP_GPIO_Port, MAINP_Pin, GPIO_PIN_RESET);
+    }
+}

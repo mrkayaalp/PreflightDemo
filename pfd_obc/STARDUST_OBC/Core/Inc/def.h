@@ -1,0 +1,185 @@
+#ifndef __DEF_H__
+#define __DEF_H__
+
+#include "stdint.h"
+
+//-----------------
+
+#define LIFTOFF_ALTITUDE 250    // meter
+#define LIFTOFF_ACCELERATION 3  // g
+
+#define BURNOUT_ACCELERATION 1.5  // g
+#define BURNOUT_ALTITUDE 800     // meter
+
+#define APOGEE_ALTITUDE 6000         // meter
+#define APOGEE_VERTICAL_VELOCITY 10  // m/s
+
+#define MAIN_PARACHUTE_ALTITUDE 1000  // meter
+
+#define FRAM_SYS_TICK_ADDR 0x40
+#define FRAM_FLIGHT_STATE_ADDR 0x50
+
+//------------------------------------
+
+#define STRING_BUFFER_SIZE 600
+
+enum flight_state_enum {
+    DEBUG_PROFILE_1,
+    START,
+    READY_FOR_FLIGHT,
+    LAUNCH_CMD_RECEIVED,
+    AFTER_LIFTOFF,
+    AFTER_BURNOUT,
+    AFTER_APOGEE,
+    AFTER_MAIN_PAR,
+    LANDED,
+    FLIGHT_FAILURE,
+};
+
+enum avionics_error_enum {
+    NO_ERROR,
+    BAROMETER_ERROR,
+    IMU_ERROR,
+    MAGNETOMETER_ERROR,
+    GPS_ERROR,
+    SD_ERROR,
+};
+
+enum control_state_enum {
+    STOP,
+    START_TEST,
+    PID_TEST,
+    QR_TEST,
+    INPUT_TEST,
+};
+
+enum ground_receive_commdands {
+    BUZZER_ON = 0xA1,
+    BUZZER_OFF = 0xA2,
+    SEPARATE = 0xB1,
+    REVERT = 0xB2,
+    MOTOR_STOP = 0xC1,
+    MOTOR_START_TEST = 0xC2,
+    MOTOR_PID_TEST = 0xC3,
+    MOTOR_QR_TEST = 0xC4,
+    MOTOR_INPUT_TEST = 0xC5,
+};
+
+typedef struct Accel {
+    float x;
+    float y;
+    float z;
+    float prev_x;
+    float prev_y;
+    float prev_z;
+    float offset_x;
+    float offset_y;
+    float offset_z;
+    float absG;
+    float prevAbsG;
+    float maxG;
+} Accel;
+
+typedef struct Gyro {
+    float x;
+    float y;
+    float z;
+    float prev_x;
+    float prev_y;
+    float prev_z;
+    float offset_x;
+    float offset_y;
+    float offset_z;
+} Gyro;
+
+typedef struct Magnetometer {
+    float x;
+    float y;
+    float z;
+    float prev_x;
+    float prev_y;
+    float prev_z;
+    float offset_x;
+    float offset_y;
+    float offset_z;
+} Magnetometer;
+
+typedef struct Angle {
+    float roll;
+    float pitch;
+    float yaw;
+    float prev_roll;
+    float prev_pitch;
+    float prev_yaw;
+    float offset_roll;
+    float offset_pitch;
+    float offset_yaw;
+
+} Angle;
+
+typedef struct Altitude {
+    float pressure;
+    float basePressure;
+    float temperature;
+    float altitude;
+    float prevAltitude;
+    float prevAltitudeForVelocity;
+    float maxAltitude;
+    float diffToMax;
+    float humidity;
+} Altitude;
+
+typedef struct Time {
+    float current;
+    float prevTime;
+    float liftoffTime;
+    float burnoutTime;
+    float apogeeTime;
+    float mainParachuteTime;
+    float timeDifference;
+    float flightTime;
+    float landingTime;
+} Time;
+
+typedef struct Velocity {
+    float verticalVelocity;
+    float prevVerticalVelocity;
+    float timeDiffVertical;
+    float prevTimeVertical;
+    float maxVerticalVelocity;
+
+    float trueVelocity;
+    double timeDiffTrue;
+    double prevTimeTrue;
+    float maxTrueVelocity;
+    float verticalVelocityCalculated;
+
+} Velocity;
+
+typedef struct Gps {
+    float latitude;
+    float longtitude;
+    float altitude;
+    int sat;
+    float utc_time;
+    float velocity;
+} Gps;
+
+typedef union {
+    double u64;
+    uint8_t u8[8];
+} double_to_u8;
+
+typedef union {
+    float u32;
+    uint8_t u8[4];
+} float_to_u8;
+
+typedef union {
+    uint16_t u16;
+    // degeri alirken cast etmek gerekiyor
+    int16_t i16;
+    uint8_t u8[2];
+} u16_to_u8;
+
+#endif  // __DEF_H__

@@ -29,12 +29,14 @@ def readSerial():
         while True:
             with open('serialRead.txt','a') as fs:
                 lineS = ser.readline()
-                lineS = lineS.decode('utf-8')
-                lineS = parseStatement(lineS) #bu kısımdan pek emin değilim
-                lineS = lineS.strip()
-                fs.write(f'Time:{currentTick} || State: ' + lineS + '\n')
-                #time.sleep(timeDiff) #bu beklemeyi nasıl yerleştireceğimiz konusunda emin değilim
-        
+                if  lineS is not None:
+                    lineS = lineS.decode('utf-8')
+                    lineS = parseStatement(lineS) #bu kısımdan pek emin değilim
+                    lineS = lineS.strip()
+                    fs.write(f'Time:{currentTick} || State: ' + lineS + '\n')
+                    #time.sleep(timeDiff) #bu beklemeyi nasıl yerleştireceğimiz konusunda emin değilim
+                else:
+                    return
                 
 
     except KeyboardInterrupt:
@@ -44,13 +46,14 @@ def readSerial():
 def parseStatement(line):
     match int(line): 
         case 1:
-            return  'START!\n'
+            return 'START!\n'
         case 4:
             return 'AFTER_LIFTOFF\n'
         case 5:
             return 'AFTER_APOGEE\n'
         case 6:
             return 'AFTER_MAIN_PAR\n'
+        
 
     
 def main():
