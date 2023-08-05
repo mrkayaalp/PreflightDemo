@@ -61,18 +61,18 @@ def main():
     global currentTick
     global timeDiff
     try:
-        with open('kongrul1.txt','r') as f:
+        with open('flight_computer_trimmed.txt','r') as f:
             prevTick = None
             for line in f:
                 line = line.strip()
                 numbers = re.findall(r'-?\d+(?:\.\d+)?', line)
                 numbers_with_commas = ','.join(numbers)
 
-                currentTick = float(numbers[6])
+                currentTick = float(numbers[0])
             
                 if prevTick is not None:
                     timeDiff = currentTick - prevTick
-                    time.sleep(timeDiff)  #kongrulda saniye cinsinden veri aldık
+                    time.sleep(timeDiff / 1000)  #kongrulda saniye cinsinden veri aldık
 
                     ser.write(bytes(numbers_with_commas + '\n', 'utf-8'))
 

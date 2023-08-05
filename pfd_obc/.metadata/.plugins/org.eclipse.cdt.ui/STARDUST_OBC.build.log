@@ -1,10 +1,10 @@
-19:29:20 **** Incremental Build of configuration Debug for project STARDUST_OBC ****
+02:16:58 **** Incremental Build of configuration Debug for project STARDUST_OBC ****
 make -j12 all 
 arm-none-eabi-size   STARDUST_OBC.elf 
    text	   data	    bss	    dec	    hex	filename
-  77300	    484	  31328	 109112	  1aa38	STARDUST_OBC.elf
+  77476	    484	  31400	 109360	  1ab30	STARDUST_OBC.elf
 Finished building: default.size.stdout
  
 
-19:29:20 Build Finished. 0 errors, 0 warnings. (took 599ms)
+02:16:59 Build Finished. 0 errors, 0 warnings. (took 363ms)
 

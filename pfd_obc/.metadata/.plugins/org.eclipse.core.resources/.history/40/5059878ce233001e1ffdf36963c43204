@@ -276,7 +276,6 @@ void checkStateEntry(void *argument)
     		HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
     		time.prevTime = time.current;
         }
-
         switch (flightState)
         {
         case START:
@@ -453,8 +452,8 @@ void dataTaskEntry(void *argument)
         //
         // readTime();
         // readAltitude();
-        // readIMU();
-        // fusionProcess();
+        readIMU();
+        fusionProcess();
         // readMagnetometer();
         // HAL_GPIO_TogglePin(USERL_GPIO_Port, USERL_Pin);
 

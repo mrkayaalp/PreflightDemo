@@ -3,6 +3,6 @@
 ../Core/Src/freertos.c:209:6:runCommandEntry	1
 ../Core/Src/freertos.c:245:6:sendTelemetryEntry	1
 ../Core/Src/freertos.c:268:6:checkStateEntry	15
-../Core/Src/freertos.c:351:6:someLoopEntry	1
-../Core/Src/freertos.c:379:6:sdLogEnrty	3
-../Core/Src/freertos.c:435:6:dataTaskEntry	1
+../Core/Src/freertos.c:352:6:someLoopEntry	1
+../Core/Src/freertos.c:380:6:sdLogEnrty	3
+../Core/Src/freertos.c:436:6:dataTaskEntry	1

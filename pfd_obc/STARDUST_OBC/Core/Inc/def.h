@@ -165,6 +165,13 @@ typedef struct Gps {
     float velocity;
 } Gps;
 
+typedef struct Illinois {
+    int8_t positionLock;
+    int8_t rocketState;
+    int8_t l1_ext;
+    int8_t l2_ext;
+} Illinois;
+
 typedef union {
     double u64;
     uint8_t u8[8];

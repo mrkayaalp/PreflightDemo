@@ -538,3 +538,18 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\Users\BurakKAYAALP\
 
 !ENTRY org.eclipse.cdt.core 1 0 2023-08-06 00:04:22.081
 !MESSAGE Indexed 'STARDUST_OBC' (68 sources, 149 headers) in 4.04 sec: 17,029 declarations; 99,649 references; 75 unresolved inclusions; 221 syntax errors; 1,982 unresolved names (1.7%)
+!SESSION 2023-08-06 00:51:09.352 -----------------------------------------------
+eclipse.buildId=Version 1.13.0
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=tr_TR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data C:\Users\BurakKAYAALP\Desktop\PreflightDemo\pfd_obc
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-08-06 00:51:12.947
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-08-06 00:51:12.948
+!MESSAGE Log4j2 initialized with config file C:\Users\BurakKAYAALP\Desktop\PreflightDemo\pfd_obc\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-08-06 00:51:17.377
+!MESSAGE Started RMI Server, listening on port 41337

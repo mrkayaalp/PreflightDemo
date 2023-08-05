@@ -114,8 +114,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
         }
         else
         {
-            // parseData(rxStr);
-            parseKongrulData(rxStr);
+            //parseData(rxStr);
+            //parseKongrulData(rxStr);
+            parseIllinoisData(rxStr);
             rxIndex = 0;
             for (int i = 0; i < sizeof(rxStr); i++)
             {

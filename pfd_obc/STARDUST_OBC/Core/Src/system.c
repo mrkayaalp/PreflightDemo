@@ -34,6 +34,8 @@ Time time;
 Velocity velocity;
 Time tlcTime;
 
+Illinois illinois;
+
 uint8_t tlcStatus;
 uint8_t bpcStatus;
 extern rxBuffer;
@@ -44,6 +46,8 @@ LIS3MDL_Axes_t magnetoData;
 int pccTime = 0;
 float pccTemp = 0;
 float pccVoltage = 0;
+
+ //illinois'in verileri için gerekli
 
 BMP280_HandleTypedef bmp280;
 float pressure, temperature, humidity;
@@ -167,6 +171,17 @@ void parseKongrulData(uint8_t *data)
            &gps.latitude, &gps.longtitude, &time.current);
 }
 
+void parseIllinoisData(uint8_t *data)
+{
+    sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%f,%d,%d,%d", &time.current,
+           &accel.x, &accel.y, &accel.z,
+           &gyro.x, &gyro.y, &gyro.z,
+           &mag.x, &mag.y, &mag.z,
+           &gps.latitude, &gps.longtitude, &altitude.altitude, &gps.sat,
+           &illinois.positionLock,
+           &altitude.temperature, &altitude.pressure, &altitude.altitude,
+           &illinois.rocketState, &illinois.l1_ext, &illinois.l2_ext);
+}
 void readData()
 {
     HAL_UART_Receive_IT(&huart2, rxBuffer, 1);
