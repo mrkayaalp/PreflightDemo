@@ -310,13 +310,12 @@ int readAltitude()
         ((time.current) - velocity.prevTimeVertical) / 1000.0f;
 
     // time diff must be greater than 0.3 sec
-    if (velocity.timeDiffVertical > 0.3)
+    if (velocity.timeDiffVertical > 1)
     {
         velocity.verticalVelocity =
             (altitude.altitude - altitude.prevAltitude) /
             velocity.timeDiffVertical;
         velocity.prevTimeVertical = time.current;
-        altitude.prevAltitude = altitude.altitude;
     }
 
     if (velocity.verticalVelocity > velocity.maxVerticalVelocity)
@@ -324,7 +323,7 @@ int readAltitude()
         velocity.maxVerticalVelocity = velocity.verticalVelocity;
     }
 
-
+    altitude.prevAltitude = altitude.altitude;
 
     return 0;
 }

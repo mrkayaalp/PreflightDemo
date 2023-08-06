@@ -307,16 +307,15 @@ int readAltitude()
 
     // calculate vertical velocity m/s
     velocity.timeDiffVertical =
-        ((time.current) - velocity.prevTimeVertical) / 1000.0f;
+        (HAL_GetTick() - velocity.prevTimeVertical) / 1000.0f;
 
     // time diff must be greater than 0.3 sec
-    if (velocity.timeDiffVertical > 0.3)
+    if (velocity.timeDiffVertical > 0.4)
     {
         velocity.verticalVelocity =
             (altitude.altitude - altitude.prevAltitude) /
             velocity.timeDiffVertical;
-        velocity.prevTimeVertical = time.current;
-        altitude.prevAltitude = altitude.altitude;
+        velocity.prevTimeVertical = HAL_GetTick();
     }
 
     if (velocity.verticalVelocity > velocity.maxVerticalVelocity)
@@ -324,7 +323,7 @@ int readAltitude()
         velocity.maxVerticalVelocity = velocity.verticalVelocity;
     }
 
-
+    altitude.prevAltitude = altitude.altitude;
 
     return 0;
 }

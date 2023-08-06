@@ -5,16 +5,16 @@
 
 //-----------------
 
-#define LIFTOFF_ALTITUDE 250    // meter
-#define LIFTOFF_ACCELERATION 3  // g
+#define LIFTOFF_ALTITUDE 250   // meter
+#define LIFTOFF_ACCELERATION 3 // g
 
-#define BURNOUT_ACCELERATION 1.5  // g
+#define BURNOUT_ACCELERATION 1.5 // g
 #define BURNOUT_ALTITUDE 800     // meter
 
-#define APOGEE_ALTITUDE 6000         // meter
-#define APOGEE_VERTICAL_VELOCITY 10  // m/s
+#define APOGEE_ALTITUDE 6000        // meter
+#define APOGEE_VERTICAL_VELOCITY 10 // m/s
 
-#define MAIN_PARACHUTE_ALTITUDE 1000  // meter
+#define MAIN_PARACHUTE_ALTITUDE 1000 // meter
 
 #define FRAM_SYS_TICK_ADDR 0x40
 #define FRAM_FLIGHT_STATE_ADDR 0x50
@@ -23,7 +23,8 @@
 
 #define STRING_BUFFER_SIZE 600
 
-enum flight_state_enum {
+enum flight_state_enum
+{
     DEBUG_PROFILE_1,
     START,
     READY_FOR_FLIGHT,
@@ -36,7 +37,8 @@ enum flight_state_enum {
     FLIGHT_FAILURE,
 };
 
-enum avionics_error_enum {
+enum avionics_error_enum
+{
     NO_ERROR,
     BAROMETER_ERROR,
     IMU_ERROR,
@@ -45,7 +47,8 @@ enum avionics_error_enum {
     SD_ERROR,
 };
 
-enum control_state_enum {
+enum control_state_enum
+{
     STOP,
     START_TEST,
     PID_TEST,
@@ -53,7 +56,8 @@ enum control_state_enum {
     INPUT_TEST,
 };
 
-enum ground_receive_commdands {
+enum ground_receive_commdands
+{
     BUZZER_ON = 0xA1,
     BUZZER_OFF = 0xA2,
     SEPARATE = 0xB1,
@@ -65,7 +69,8 @@ enum ground_receive_commdands {
     MOTOR_INPUT_TEST = 0xC5,
 };
 
-typedef struct Accel {
+typedef struct Accel
+{
     float x;
     float y;
     float z;
@@ -80,7 +85,8 @@ typedef struct Accel {
     float maxG;
 } Accel;
 
-typedef struct Gyro {
+typedef struct Gyro
+{
     float x;
     float y;
     float z;
@@ -92,7 +98,8 @@ typedef struct Gyro {
     float offset_z;
 } Gyro;
 
-typedef struct Magnetometer {
+typedef struct Magnetometer
+{
     float x;
     float y;
     float z;
@@ -104,7 +111,8 @@ typedef struct Magnetometer {
     float offset_z;
 } Magnetometer;
 
-typedef struct Angle {
+typedef struct Angle
+{
     float roll;
     float pitch;
     float yaw;
@@ -117,7 +125,8 @@ typedef struct Angle {
 
 } Angle;
 
-typedef struct Altitude {
+typedef struct Altitude
+{
     float pressure;
     float basePressure;
     float temperature;
@@ -129,7 +138,8 @@ typedef struct Altitude {
     float humidity;
 } Altitude;
 
-typedef struct Time {
+typedef struct Time
+{
     float current;
     float prevTime;
     float liftoffTime;
@@ -141,7 +151,8 @@ typedef struct Time {
     float landingTime;
 } Time;
 
-typedef struct Velocity {
+typedef struct Velocity
+{
     float verticalVelocity;
     float prevVerticalVelocity;
     float timeDiffVertical;
@@ -156,7 +167,8 @@ typedef struct Velocity {
 
 } Velocity;
 
-typedef struct Gps {
+typedef struct Gps
+{
     float latitude;
     float longtitude;
     float altitude;
@@ -165,28 +177,33 @@ typedef struct Gps {
     float velocity;
 } Gps;
 
-typedef struct Illinois {
+typedef struct Illinois
+{
+    float altitude;
     int8_t positionLock;
     int8_t rocketState;
-    int8_t l1_ext;
-    int8_t l2_ext;
+    float l1_ext;
+    float l2_ext;
 } Illinois;
 
-typedef union {
+typedef union
+{
     double u64;
     uint8_t u8[8];
 } double_to_u8;
 
-typedef union {
+typedef union
+{
     float u32;
     uint8_t u8[4];
 } float_to_u8;
 
-typedef union {
+typedef union
+{
     uint16_t u16;
     // degeri alirken cast etmek gerekiyor
     int16_t i16;
     uint8_t u8[2];
 } u16_to_u8;
 
-#endif  // __DEF_H__
+#endif // __DEF_H__

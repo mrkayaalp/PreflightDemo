@@ -71,6 +71,7 @@ void mainSchute(uint8_t state);
 void parseData(uint8_t *data);
 void parseKongrulData(uint8_t *data);
 void parseIllinoisData(uint8_t *data);
+void basePressure();
 
 void altitudeApogee();
 void velocityCalculated();

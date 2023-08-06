@@ -173,13 +173,13 @@ void parseKongrulData(uint8_t *data)
 
 void parseIllinoisData(uint8_t *data)
 {
-    sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%f,%d,%f,%f", &time.current,
+    sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%f,%d,%f,%d", &time.current,
            &accel.x, &accel.y, &accel.z,
            &gyro.x, &gyro.y, &gyro.z,
            &mag.x, &mag.y, &mag.z,
-           &gps.latitude, &gps.longtitude, &gps.altitude, &gps.sat,
+           &gps.latitude, &gps.longtitude, &illinois.altitude, &gps.sat,
            &illinois.positionLock,
-           &altitude.temperature, &altitude.pressure, &illinois.altitude,
+           &altitude.temperature, &altitude.pressure, &altitude.altitude,
            &illinois.rocketState, &illinois.l1_ext, &illinois.l2_ext);
 }
 void readData()
@@ -268,13 +268,13 @@ int initBarometer()
 
 void basePressure()
 {
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 250; i++)
     {
         altitude.basePressure += altitude.pressure;
         HAL_Delay(2);
     }
 
-    altitude.basePressure /= 100;
+    altitude.basePressure /= 250;
 }
 
 int readBarometer()
@@ -292,10 +292,10 @@ int readAltitude()
     // readBarometer();
 
     altitude.altitude =
-        calculateAltitude(altitude.pressure, altitude.basePressure) + 274.279;
+        calculateAltitude(altitude.pressure, altitude.basePressure);
 
-    //    altitude.altitude =
-    //        yrt_simpleKalman_updateEstimate(&barometerKalman, altitude.altitude);
+    altitude.altitude =
+        yrt_simpleKalman_updateEstimate(&barometerKalman, altitude.altitude);
 
     /* diif (-) ise cikiyorsun (+) ise iniyorsun  */
     altitude.diffToMax = altitude.maxAltitude - altitude.altitude;
@@ -305,9 +305,11 @@ int readAltitude()
         altitude.maxAltitude = altitude.altitude;
     }
 
+    altitude.prevAltitude = altitude.altitude;
+
     // calculate vertical velocity m/s
     velocity.timeDiffVertical =
-        ((time.current) - velocity.prevTimeVertical) / 1000.0f;
+        (time.current - velocity.prevTimeVertical) / 1000.0f;
 
     // time diff must be greater than 0.3 sec
     if (velocity.timeDiffVertical > 0.3)
@@ -316,15 +318,12 @@ int readAltitude()
             (altitude.altitude - altitude.prevAltitude) /
             velocity.timeDiffVertical;
         velocity.prevTimeVertical = time.current;
-        altitude.prevAltitude = altitude.altitude;
     }
 
     if (velocity.verticalVelocity > velocity.maxVerticalVelocity)
     {
         velocity.maxVerticalVelocity = velocity.verticalVelocity;
     }
-
-
 
     return 0;
 }

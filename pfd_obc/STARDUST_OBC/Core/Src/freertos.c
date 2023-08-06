@@ -248,11 +248,11 @@ void sendTelemetryEntry(void *argument)
     /* Infinite loop */
     for (;;)
     {
-//        createTxString();
-//        HAL_UART_Transmit(&huart2, (uint8_t *)tlcTxString, strlen(tlcTxString),
-//                          100);
-//        HAL_UART_Transmit(&huart4, (uint8_t *)tlcTxString, strlen(tlcTxString),
-//                          100);
+        //        createTxString();
+        //        HAL_UART_Transmit(&huart2, (uint8_t *)tlcTxString, strlen(tlcTxString),
+        //                          100);
+        //        HAL_UART_Transmit(&huart4, (uint8_t *)tlcTxString, strlen(tlcTxString),
+        //                          100);
         osDelay(10);
     }
     /* USER CODE END sendTelemetryEntry */
@@ -271,10 +271,11 @@ void checkStateEntry(void *argument)
     /* Infinite loop */
     for (;;)
     {
-        if(time.current != time.prevTime){
-    		sprintf(flightStateData, "%d\n", flightState);
-    		HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
-    		time.prevTime = time.current;
+        if (time.current != time.prevTime)
+        {
+            sprintf(flightStateData, "%d\n", flightState);
+            HAL_UART_Transmit_IT(&huart2, flightStateData, sizeof(flightStateData));
+            time.prevTime = time.current;
         }
 
         switch (flightState)
@@ -282,7 +283,7 @@ void checkStateEntry(void *argument)
         case START:
             if (checkLiftoff() == 1)
             {
-                time.liftoffTime = HAL_GetTick();
+                time.liftoffTime = time.current;
                 flightState = AFTER_LIFTOFF;
             }
             break;
@@ -290,7 +291,7 @@ void checkStateEntry(void *argument)
         case AFTER_LIFTOFF:
             if (checkBurnout() == 1)
             {
-                time.burnoutTime = HAL_GetTick();
+                time.burnoutTime = time.current;
                 flightState = AFTER_BURNOUT;
             }
             break;
@@ -298,7 +299,7 @@ void checkStateEntry(void *argument)
         case AFTER_BURNOUT:
             if (checkApogee() == 1)
             {
-                time.apogeeTime = HAL_GetTick();
+                time.apogeeTime = time.current;
                 flightState = AFTER_APOGEE;
                 dragSchute(1);
             }
@@ -307,7 +308,7 @@ void checkStateEntry(void *argument)
         case AFTER_APOGEE:
             if (checkMainParachute() == 1)
             {
-                time.mainParachuteTime = HAL_GetTick();
+                time.mainParachuteTime = time.current;
                 flightState = AFTER_MAIN_PAR;
                 mainSchute(1);
             }
@@ -316,7 +317,7 @@ void checkStateEntry(void *argument)
         case AFTER_MAIN_PAR:
             if (checkLanding() == 1)
             {
-                time.landingTime = HAL_GetTick();
+                time.landingTime = time.current;
                 flightState = LANDED;
             }
             break;
@@ -443,7 +444,8 @@ void dataTaskEntry(void *argument)
     // initBarometer();
     // initIMU();
     // initMagnetometer();,
-    //readData();
+    // readData();
+    basePressure(); // init fonk. base pressure değeri için bir fonk.
 
     // dataCollectingTime = HAL_GetTick() - temp;
     /* Infinite loop */
@@ -451,16 +453,15 @@ void dataTaskEntry(void *argument)
     {
         // temp = HAL_GetTick();
         //
-        // readTime();
-        // readAltitude();
-        // readIMU();
+        readTime();
+        readAltitude();
+        readIMU();
         // fusionProcess();
         // readMagnetometer();
-        // HAL_GPIO_TogglePin(USERL_GPIO_Port, USERL_Pin);
+        //  HAL_GPIO_TogglePin(USERL_GPIO_Port, USERL_Pin);
 
-        //altitudeApogee();
-        //velocityCalculated();
-        // dataCollectingTime = HAL_GetTick() - temp;
+        // velocityCalculated();
+        //  dataCollectingTime = HAL_GetTick() - temp;
         osDelay(1);
     }
     /* USER CODE END dataTaskEntry */
