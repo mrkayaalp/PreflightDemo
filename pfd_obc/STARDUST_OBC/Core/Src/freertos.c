@@ -335,7 +335,7 @@ void checkStateEntry(void *argument)
             break;
 
         default:
-            // DEBUG_PROFILE_X
+        	flightState = START;
             break;
         }
         osDelay(1);
@@ -439,7 +439,7 @@ void dataTaskEntry(void *argument)
     /* USER CODE BEGIN dataTaskEntry */
     // int temp;
     // temp = HAL_GetTick();
-    // initFilter();
+    initFilter();
 
     // initBarometer();
     // initIMU();

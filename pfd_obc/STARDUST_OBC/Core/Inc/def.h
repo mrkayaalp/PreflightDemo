@@ -5,13 +5,13 @@
 
 //-----------------
 
-#define LIFTOFF_ALTITUDE 250   // meter
+#define LIFTOFF_ALTITUDE 270   // meter
 #define LIFTOFF_ACCELERATION 3 // g
 
 #define BURNOUT_ACCELERATION 1.5 // g
 #define BURNOUT_ALTITUDE 800     // meter
 
-#define APOGEE_ALTITUDE 6000        // meter
+#define APOGEE_ALTITUDE 3100        // meter
 #define APOGEE_VERTICAL_VELOCITY 10 // m/s
 
 #define MAIN_PARACHUTE_ALTITUDE 1000 // meter

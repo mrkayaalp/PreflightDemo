@@ -1,5 +1,9 @@
 altitude
-velocity
 gps
 time
 flightState
+accel
+mag
+gyro
+illinois
+velocity

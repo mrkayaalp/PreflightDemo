@@ -12,7 +12,8 @@ small number between 0.001 and 1 - how fast your measurement moves. Recommended
 */
 
 void yrt_simpleKalman_init(yrt_simpleKalman_t *kalman, float mea_e, float est_e,
-                           float q) {
+                           float q)
+{
     kalman->err_measure = mea_e;
     kalman->err_estimate = est_e;
     kalman->q = q;
@@ -21,7 +22,8 @@ void yrt_simpleKalman_init(yrt_simpleKalman_t *kalman, float mea_e, float est_e,
     kalman->last_estimate = 0;
     kalman->kalman_gain = 0;
 }
-float yrt_simpleKalman_updateEstimate(yrt_simpleKalman_t *kalman, float mea) {
+float yrt_simpleKalman_updateEstimate(yrt_simpleKalman_t *kalman, float mea)
+{
     kalman->kalman_gain =
         kalman->err_estimate / (kalman->err_estimate + kalman->err_measure);
     kalman->current_estimate =
@@ -34,6 +36,7 @@ float yrt_simpleKalman_updateEstimate(yrt_simpleKalman_t *kalman, float mea) {
 
     return kalman->current_estimate;
 }
-float yrt_simpleKalman_getEstimate(yrt_simpleKalman_t *kalman) {
+float yrt_simpleKalman_getEstimate(yrt_simpleKalman_t *kalman)
+{
     return kalman->current_estimate;
 }

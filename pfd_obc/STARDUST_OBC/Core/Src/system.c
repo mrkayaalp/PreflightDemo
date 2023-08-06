@@ -294,8 +294,8 @@ int readAltitude()
     altitude.altitude =
         calculateAltitude(altitude.pressure, altitude.basePressure) + 274.279;
 
-    //    altitude.altitude =
-    //        yrt_simpleKalman_updateEstimate(&barometerKalman, altitude.altitude);
+    altitude.altitude =
+        yrt_simpleKalman_updateEstimate(&barometerKalman, altitude.altitude);
 
     /* diif (-) ise cikiyorsun (+) ise iniyorsun  */
     altitude.diffToMax = altitude.maxAltitude - altitude.altitude;
@@ -324,8 +324,6 @@ int readAltitude()
         velocity.maxVerticalVelocity = velocity.verticalVelocity;
     }
 
-
-
     return 0;
 }
 
@@ -353,17 +351,17 @@ int readIMU()
     // accel.y = (float)user_accel_bmi088.y / 1000;
     // accel.z = (float)user_accel_bmi088.z / 1000;
     //
-    // gyro.x = (float)user_gyro_bmi088.x / 1000;
-    // gyro.y = (float)user_gyro_bmi088.y / 1000;
-    // gyro.z = (float)user_gyro_bmi088.z / 1000;
-    //
-    // accel.x = yrt_simpleKalman_updateEstimate(&accelXKalman, accel.x);
-    // accel.y = yrt_simpleKalman_updateEstimate(&accelYKalman, accel.y);
-    // accel.z = yrt_simpleKalman_updateEstimate(&accelZKalman, accel.z);
-    //
-    // gyro.x = yrt_simpleKalman_updateEstimate(&gyroXKalman, gyro.x);
-    // gyro.y = yrt_simpleKalman_updateEstimate(&gyroYKalman, gyro.y);
-    // gyro.z = yrt_simpleKalman_updateEstimate(&gyroZKalman, gyro.z);
+    gyro.x = (float)user_gyro_bmi088.x / 1000;
+    gyro.y = (float)user_gyro_bmi088.y / 1000;
+    gyro.z = (float)user_gyro_bmi088.z / 1000;
+
+    accel.x = yrt_simpleKalman_updateEstimate(&accelXKalman, accel.x);
+    accel.y = yrt_simpleKalman_updateEstimate(&accelYKalman, accel.y);
+    accel.z = yrt_simpleKalman_updateEstimate(&accelZKalman, accel.z);
+
+    gyro.x = yrt_simpleKalman_updateEstimate(&gyroXKalman, gyro.x);
+    gyro.y = yrt_simpleKalman_updateEstimate(&gyroYKalman, gyro.y);
+    gyro.z = yrt_simpleKalman_updateEstimate(&gyroZKalman, gyro.z);
 
     accel.absG = sqrt(pow(accel.x, 2) + pow(accel.y, 2) + pow(accel.z, 2));
     if (accel.absG > accel.maxG)
