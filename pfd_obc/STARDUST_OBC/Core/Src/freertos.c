@@ -441,7 +441,7 @@ void dataTaskEntry(void *argument)
     // temp = HAL_GetTick();
     initFilter();
 
-    // initBarometer();
+    //initBarometer();
     // initIMU();
     // initMagnetometer();,
     // readData();

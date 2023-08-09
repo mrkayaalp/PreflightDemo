@@ -173,14 +173,12 @@ void parseKongrulData(uint8_t *data)
 
 void parseIllinoisData(uint8_t *data)
 {
-    sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%f,%d,%f,%f", &time.current,
+    sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%f,%f,%f", &time.current,
            &accel.x, &accel.y, &accel.z,
            &gyro.x, &gyro.y, &gyro.z,
            &mag.x, &mag.y, &mag.z,
            &gps.latitude, &gps.longtitude, &gps.altitude, &gps.sat,
-           &illinois.positionLock,
-           &altitude.temperature, &altitude.pressure, &illinois.altitude,
-           &illinois.rocketState, &illinois.l1_ext, &illinois.l2_ext);
+           &altitude.temperature, &altitude.pressure, &illinois.altitude, );
 }
 void readData()
 {

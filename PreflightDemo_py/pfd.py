@@ -2,8 +2,17 @@ import serial
 import time
 import re
 import threading
+import csv
+import numpy as np
+import pandas as pd
+
 
 import sys
+
+CSV_FILE = 'flight_computer_trimmed.csv'
+TXT_FILE = 'flight_computer_trimmed.txt'
+
+flight_comp_tri = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz', 'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock', 'temperature', 'pressure', 'barometer_altitude', 'rocket_state', 'l1_extension', 'l2_extension',]
 
 
 def openSerial():
@@ -14,13 +23,22 @@ def openSerial():
         print("Error opening serial port")
         sys.exit(1)
 
-ser = openSerial()
-currentTick = 0
-timeDiff = 0
+# ser = openSerial()
+# currentTick = 0
+# timeDiff = 0
 
 
         
-        
+def dataArrange():
+    data = pd.read_csv(CSV_FILE, names= flight_comp_tri)
+
+
+    data.to_csv('arrData.csv', columns= ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','temperature','barometer_altitude','pressure'], index=True, header=True)
+    print(data)
+    
+
+
+
 def readSerial():
     global ser
     global currentTick
@@ -61,7 +79,7 @@ def main():
     global currentTick
     global timeDiff
     try:
-        with open('flight_computer_trimmed.txt','r') as f:
+        with open('arrData','r') as f:
             prevTick = None
             for line in f:
                 line = line.strip()
@@ -83,16 +101,17 @@ def main():
         ser.close()
         sys.exit(0)
 
-threadMain = threading.Thread(target=main)
-threadReadSerial = threading.Thread(target=readSerial)
+# threadMain = threading.Thread(target=main)
+# threadReadSerial = threading.Thread(target=readSerial)
 
 
-threadMain.start()
-threadReadSerial.start()
+# threadMain.start()
+# threadReadSerial.start()
 
-#bu kısma terkar bakılacak
+#bu kısma tekrar bakılacak
 
 #main()
+dataArrange()
 
 
 
