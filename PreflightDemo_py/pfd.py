@@ -9,11 +9,18 @@ import pandas as pd
 
 import sys
 
-CSV_FILE = 'flight_computer_trimmed.csv'
+CSV_FILE = 'flight2_computer.csv'
 TXT_FILE = 'flight_computer_trimmed.txt'
 
 flight_comp_tri = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz', 'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock', 'temperature', 'pressure', 'barometer_altitude', 'rocket_state', 'l1_extension', 'l2_extension',]
 
+
+flight2_comp = ['timestamp_ms', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz',
+    'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock',
+    'temperature', 'pressure', 'barometer_altitude', 'highg_ax', 'highg_ay',
+    'highg_az', 'rocket_state0', 'rocket_state1', 'rocket_state2', 'rocket_state3',
+    'flap_extension', 'state_est_x', 'state_est_vx', 'state_est_ax', 'state_est_apo',
+    'battery_voltage']
 
 def openSerial():
     try:
@@ -30,10 +37,12 @@ def openSerial():
 
         
 def dataArrange():
-    data = pd.read_csv(CSV_FILE, names= flight_comp_tri)
+    data = pd.read_csv(CSV_FILE, names= flight2_comp)
 
 
-    data.to_csv('arrData.csv', columns= ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','temperature','barometer_altitude','pressure'], index=True, header=True)
+    data.to_csv('arrData.csv', columns= ['timestamp_ms', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','temperature','barometer_altitude','pressure'], index=True, header=True)
+    data = data.drop(data.columns[0], axis=1)
+
     print(data)
     
 
