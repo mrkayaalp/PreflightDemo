@@ -9,13 +9,13 @@ import pandas as pd
 
 import sys
 
-CSV_FILE = 'flight2_computer.csv'
+CSV_FILE = 'flight_computer_trimmed.csv'
 TXT_FILE = 'flight_computer_trimmed.txt'
 
-flight_comp_tri = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz', 'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock', 'temperature', 'pressure', 'barometer_altitude', 'rocket_state', 'l1_extension', 'l2_extension',]
+flight_comp_tri = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz', 'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock', 'temperature', 'pressure', 'barometer_altitude', 'rocket_state', 'l1_extension', 'l2_extension','smt']
 
 
-flight2_comp = ['timestamp_ms', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz',
+flight2_comp = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz',
     'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock',
     'temperature', 'pressure', 'barometer_altitude', 'highg_ax', 'highg_ay',
     'highg_az', 'rocket_state0', 'rocket_state1', 'rocket_state2', 'rocket_state3',
@@ -30,21 +30,19 @@ def openSerial():
         print("Error opening serial port")
         sys.exit(1)
 
-# ser = openSerial()
-# currentTick = 0
-# timeDiff = 0
+ser = openSerial()
+currentTick = 0
+timeDiff = 0
 
 
         
 def dataArrange():
-    data = pd.read_csv(CSV_FILE, names= flight2_comp)
+    data = pd.read_csv(CSV_FILE, names= flight_comp_tri)
 
 
-    data.to_csv('arrData.csv', columns= ['timestamp_ms', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','temperature','barometer_altitude','pressure'], index=True, header=True)
-    data = data.drop(data.columns[0], axis=1)
-
-    print(data)
+    data.to_csv('arrData.csv', columns= ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','barometer_altitude','pressure'], index=False, header=False)
     
+
 
 
 
@@ -88,18 +86,18 @@ def main():
     global currentTick
     global timeDiff
     try:
-        with open('arrData','r') as f:
+        with open('arrData.csv','r') as f:
             prevTick = None
             for line in f:
                 line = line.strip()
                 numbers = re.findall(r'-?\d+(?:\.\d+)?', line)
                 numbers_with_commas = ','.join(numbers)
 
-                currentTick = float(numbers[0])
+                currentTick = int(numbers[0]) #kongrulda float olacak
             
                 if prevTick is not None:
                     timeDiff = currentTick - prevTick
-                    time.sleep(timeDiff / 1000)  #kongrulda saniye cinsinden veri aldık
+                    time.sleep(timeDiff / 1000)  #kongrulda saniye cinsinden yazılacak
 
                     ser.write(bytes(numbers_with_commas + '\n', 'utf-8'))
 
@@ -110,17 +108,17 @@ def main():
         ser.close()
         sys.exit(0)
 
-# threadMain = threading.Thread(target=main)
-# threadReadSerial = threading.Thread(target=readSerial)
+dataArrange()
 
+threadMain = threading.Thread(target=main)
+threadReadSerial = threading.Thread(target=readSerial)
 
-# threadMain.start()
-# threadReadSerial.start()
+threadMain.start()
+threadReadSerial.start()
 
 #bu kısma tekrar bakılacak
 
 #main()
-dataArrange()
 
 
 

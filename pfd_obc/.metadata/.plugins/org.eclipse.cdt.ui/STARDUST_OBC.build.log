@@ -1,42 +1,112 @@
-15:34:08 **** Incremental Build of configuration Debug for project STARDUST_OBC ****
+04:59:06 **** Incremental Build of configuration Debug for project STARDUST_OBC ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../X-CUBE-MEMS1/Target -I../Drivers/BSP/Components/lis3mdl -O0 -ffunction-sections -fdata-sections -Wall -u_printf_float -u_scanf_float -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/freertos.o"
-../Core/Src/freertos.c: In function 'checkStateEntry':
-../Core/Src/freertos.c:276:21: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
-  276 |             sprintf(flightStateData, "%d\n", flightState);
-      |                     ^~~~~~~~~~~~~~~
-      |                     |
-      |                     uint8_t * {aka unsigned char *}
+arm-none-eabi-gcc "../Core/Src/system.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../X-CUBE-MEMS1/Target -I../Drivers/BSP/Components/lis3mdl -O0 -ffunction-sections -fdata-sections -Wall -u_printf_float -u_scanf_float -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system.d" -MT"Core/Src/system.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system.o"
+../Core/Src/system.c:41:8: warning: type defaults to 'int' in declaration of 'rxBuffer' [-Wimplicit-int]
+   41 | extern rxBuffer;
+      |        ^~~~~~~~
+../Core/Src/system.c:89:17: warning: initialization of 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} from incompatible pointer type 'osStatus_t (*)(uint32_t)' {aka 'osStatus_t (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   89 |     .delay_ms = &osDelay,      // user_delay_milli_sec
+      |                 ^
+../Core/Src/system.c:89:17: note: (near initialization for 'bmiDev.delay_ms')
+../Core/Src/system.c: In function 'parseKongrulData':
+../Core/Src/system.c:168:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  168 |     sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
+      |            ^~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
 In file included from ../Core/Inc/system.h:6,
-                 from ../Core/Src/freertos.c:32:
-C:\ST\STM32CubeIDE_1.11.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:254:18: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-  254 | int     sprintf (char *__restrict, const char *__restrict, ...)
-      |                  ^
-../Core/Src/freertos.c: In function 'sdLogEnrty':
-../Core/Src/freertos.c:399:9: warning: unused variable 'tick_t' [-Wunused-variable]
-  399 |     int tick_t = 0;
-      |         ^~~~~~
-../Core/Src/freertos.c:398:11: warning: unused variable 'test_float' [-Wunused-variable]
-  398 |     float test_float = 0.0f;
-      |           ^~~~~~~~~~
-../Core/Src/freertos.c: In function 'checkStateEntry':
-../Core/Src/freertos.c:276:43: warning: 'sprintf' writing a terminating nul past the end of the destination [-Wformat-overflow=]
-  276 |             sprintf(flightStateData, "%d\n", flightState);
-      |                                           ^
-../Core/Src/freertos.c:276:13: note: 'sprintf' output between 3 and 5 bytes into a destination of size 2
-  276 |             sprintf(flightStateData, "%d\n", flightState);
-      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                 from ../Core/Src/system.c:1:
+C:\ST\STM32CubeIDE_1.11.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:214:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  214 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/system.c: In function 'parseIllinoisData':
+../Core/Src/system.c:176:12: warning: pointer targets in passing argument 1 of 'sscanf' differ in signedness [-Wpointer-sign]
+  176 |     sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &time.current,
+      |            ^~~~
+      |            |
+      |            uint8_t * {aka unsigned char *}
+In file included from ../Core/Inc/system.h:6,
+                 from ../Core/Src/system.c:1:
+C:\ST\STM32CubeIDE_1.11.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.0.202305231506\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/stdio.h:214:17: note: expected 'const char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  214 | int     sscanf (const char *__restrict, const char *__restrict, ...)
+      |                 ^
+../Core/Src/system.c:176:18: warning: too many arguments for format [-Wformat-extra-args]
+  176 |     sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &time.current,
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/system.c: In function 'readData':
+../Core/Src/system.c:184:34: warning: passing argument 2 of 'HAL_UART_Receive_IT' makes pointer from integer without a cast [-Wint-conversion]
+  184 |     HAL_UART_Receive_IT(&huart2, rxBuffer, 1);
+      |                                  ^~~~~~~~
+      |                                  |
+      |                                  int
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Inc/i2c.h:29,
+                 from ../Core/Inc/system.h:4,
+                 from ../Core/Src/system.c:1:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:725:75: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'int'
+  725 | HAL_StatusTypeDef HAL_UART_Receive_IT(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+      |                                                                  ~~~~~~~~~^~~~~
+../Core/Src/system.c: In function 'velocityCalculated':
+../Core/Src/system.c:220:12: warning: 'return' with a value, in function returning void [-Wreturn-type]
+  220 |     return 0;
+      |            ^
+../Core/Src/system.c:196:6: note: declared here
+  196 | void velocityCalculated()
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/system.c: In function 'initBarometer':
+../Core/Src/system.c:251:10: warning: unused variable 'bme280p' [-Wunused-variable]
+  251 |     bool bme280p = bmp280.id == BME280_CHIP_ID;
+      |          ^~~~~~~
+../Core/Src/system.c: In function 'initMagnetometer':
+../Core/Src/system.c:446:25: warning: assignment to 'LIS3MDL_Delay_Func' {aka 'void (*)(long unsigned int)'} from incompatible pointer type 'osStatus_t (*)(uint32_t)' {aka 'osStatus_t (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+  446 |     magnetoObj.IO.Delay = &osDelay;
+      |                         ^
+../Core/Src/system.c:458:38: warning: passing argument 1 of 'lis3mdl_operating_mode_set' from incompatible pointer type [-Wincompatible-pointer-types]
+  458 |     ret = lis3mdl_operating_mode_set(&magnetoObj, LIS3MDL_CONTINUOUS_MODE);
+      |                                      ^~~~~~~~~~~
+      |                                      |
+      |                                      LIS3MDL_Object_t *
+In file included from ../Drivers/BSP/Components/lis3mdl/lis3mdl.h:29,
+                 from ../Core/Inc/system.h:11,
+                 from ../Core/Src/system.c:1:
+../Drivers/BSP/Components/lis3mdl/lis3mdl_reg.h:454:50: note: expected 'stmdev_ctx_t *' but argument is of type 'LIS3MDL_Object_t *'
+  454 | int32_t lis3mdl_operating_mode_set(stmdev_ctx_t *ctx,
+      |                                    ~~~~~~~~~~~~~~^~~
+../Core/Src/system.c: In function 'parseTlcString':
+../Core/Src/system.c:579:20: warning: format '%f' expects argument of type 'float *', but argument 3 has type 'Time *' [-Wformat=]
+  579 |     sscanf(data, "%f,%d,%d,%f,%f,%f\n", &tlcTime, &tlcStatus, &bpcStatus,
+      |                   ~^                    ~~~~~~~~
+      |                    |                    |
+      |                    float *              Time *
+../Core/Src/system.c:579:23: warning: format '%d' expects argument of type 'int *', but argument 4 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+  579 |     sscanf(data, "%f,%d,%d,%f,%f,%f\n", &tlcTime, &tlcStatus, &bpcStatus,
+      |                      ~^                           ~~~~~~~~~~
+      |                       |                           |
+      |                       int *                       uint8_t * {aka unsigned char *}
+      |                      %hhd
+../Core/Src/system.c:579:26: warning: format '%d' expects argument of type 'int *', but argument 5 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+  579 |     sscanf(data, "%f,%d,%d,%f,%f,%f\n", &tlcTime, &tlcStatus, &bpcStatus,
+      |                         ~^                                    ~~~~~~~~~~
+      |                          |                                    |
+      |                          int *                                uint8_t * {aka unsigned char *}
+      |                         %hhd
+../Core/Src/system.c: In function 'fusionProcess':
+../Core/Src/system.c:435:1: warning: control reaches end of non-void function [-Wreturn-type]
+  435 | }
+      | ^
 arm-none-eabi-gcc -o "STARDUST_OBC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\BurakKAYAALP\Desktop\PreflightDemo\pfd_obc\STARDUST_OBC\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STARDUST_OBC.map" -Wl,--gc-sections -static -u_printf_float -u_scanf_float --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: STARDUST_OBC.elf
  
 arm-none-eabi-size   STARDUST_OBC.elf 
 arm-none-eabi-objdump -h -S  STARDUST_OBC.elf  > "STARDUST_OBC.list"
    text	   data	    bss	    dec	    hex	filename
-  83232	    504	  31664	 115400	  1c2c8	STARDUST_OBC.elf
+  83120	    504	  31624	 115248	  1c230	STARDUST_OBC.elf
 Finished building: default.size.stdout
  
 Finished building: STARDUST_OBC.list
  
 
-15:34:09 Build Finished. 0 errors, 4 warnings. (took 1s.334ms)
+04:59:08 Build Finished. 0 errors, 14 warnings. (took 1s.274ms)
 
