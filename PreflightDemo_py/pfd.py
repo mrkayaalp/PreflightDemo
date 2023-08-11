@@ -9,10 +9,12 @@ import pandas as pd
 
 import sys
 
-CSV_FILE = 'flight_computer_trimmed.csv'
-TXT_FILE = 'flight_computer_trimmed.txt'
+CSV_FILE = 'semrukV.csv'
+TXT_FILE = 'semruk3.txt'
+
 
 flight_comp_tri = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz', 'latitude', 'longitude', 'altitude', 'satellite_count', 'position_lock', 'temperature', 'pressure', 'barometer_altitude', 'rocket_state', 'l1_extension', 'l2_extension','smt']
+
 
 
 flight2_comp = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz',
@@ -22,6 +24,10 @@ flight2_comp = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'mx', 'my', 'mz',
     'flap_extension', 'state_est_x', 'state_est_vx', 'state_est_ax', 'state_est_apo',
     'battery_voltage']
 
+illinois_parse_column = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','barometer_altitude','pressure']
+
+semrukV = ['time', 'ax', 'ay', 'az','barometer_altitude','velo']
+
 def openSerial():
     try:
         ser = serial.Serial('COM14', 115200) #COM 11 -- 14
@@ -30,17 +36,21 @@ def openSerial():
         print("Error opening serial port")
         sys.exit(1)
 
-ser = openSerial()
-currentTick = 0
-timeDiff = 0
+# ser = openSerial()
+# currentTick = 0
+# timeDiff = 0
 
 
         
 def dataArrange():
-    data = pd.read_csv(CSV_FILE, names= flight_comp_tri)
+    data = pd.read_csv(TXT_FILE, names= ['barometer_altitude', 'smt','smt1'], sep='|') #txt file olarak konulacaklar virgüle göre ayrılacaktır
+
+    # data['barometer_altitude'] = data[0].str.split(':').str[1]
+
+    # data.drop(columns=[0, 1, 2], inplace=True) 
 
 
-    data.to_csv('arrData.csv', columns= ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','longitude','barometer_altitude','pressure'], index=False, header=False)
+    data.to_csv('arrData.csv', columns= ['barometer_altitude'], index=False, header=True)
     
 
 
@@ -110,11 +120,11 @@ def main():
 
 dataArrange()
 
-threadMain = threading.Thread(target=main)
-threadReadSerial = threading.Thread(target=readSerial)
+# threadMain = threading.Thread(target=main)
+# threadReadSerial = threading.Thread(target=readSerial)
 
-threadMain.start()
-threadReadSerial.start()
+# threadMain.start()
+# threadReadSerial.start()
 
 #bu kısma tekrar bakılacak
 
