@@ -1,209 +1,209 @@
-Irtifa: 31.72|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4020271 Boylam: 33.7045936
-Irtifa: 149.65|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 268.25|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 390.55|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 519.89|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 633.56|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 771.36|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 906.13|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1021.97|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1133.78|| Uydu Sayisi: 12 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1240.66|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1339.78|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1440.83|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1537.14|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1622.72|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1711.79|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1803.22|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1885.13|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 1963.23|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2036.57|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2106.04|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2172.68|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2235.07|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2294.61|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2351.68|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2403.54|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2453.84|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2499.95|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2543.38|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2583.12|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2619.81|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2653.59|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2683.90|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2711.67|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2736.06|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2757.80|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2776.23|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2792.16|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2804.87|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2814.93|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2822.32|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2826.83|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2828.80|| Uydu Sayisi: 0 Irtifa(GPS): 919.5000000 Enlem: 38.4019584 Boylam: 33.7046928
-Irtifa: 2828.66|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2827.09|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2823.51|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2815.57|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2801.29|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2758.51|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2727.18|| Uydu Sayisi: 4 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2737.89|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2737.67|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2734.41|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2727.62|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2711.13|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2688.20|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2656.17|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2629.92|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2595.75|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2576.45|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2564.59|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2560.81|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2554.98|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2522.45|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2501.45|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2475.30|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2448.84|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2422.57|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2399.31|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2360.51|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2331.69|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2286.53|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2244.55|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2227.35|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2217.67|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2222.98|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2229.65|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2207.90|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2151.55|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2149.37|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2133.84|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4158363 Boylam: 33.6845130
-Irtifa: 2108.89|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4092712 Boylam: 33.6999511
-Irtifa: 2054.94|| Uydu Sayisi: 0 Irtifa(GPS): 919.2999877 Enlem: 38.4092712 Boylam: 33.6999511
-Irtifa: 1983.19|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092521 Boylam: 33.6999549
-Irtifa: 2014.65|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092521 Boylam: 33.6999549
-Irtifa: 2018.22|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092521 Boylam: 33.6999549
-Irtifa: 2004.45|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092521 Boylam: 33.6999549
-Irtifa: 1960.80|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092521 Boylam: 33.6999549
-Irtifa: 1901.95|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092521 Boylam: 33.6999549
-Irtifa: 1916.06|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092445 Boylam: 33.6999206
-Irtifa: 1880.94|| Uydu Sayisi: 12 Irtifa(GPS): 3033.1999511 Enlem: 38.4092445 Boylam: 33.6999206
-Irtifa: 1861.56|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4092597 Boylam: 33.6999130
-Irtifa: 1860.76|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4092597 Boylam: 33.6999130
-Irtifa: 1817.63|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4092597 Boylam: 33.6999130
-Irtifa: 1733.39|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4092597 Boylam: 33.6999130
-Irtifa: 1689.72|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4092597 Boylam: 33.6999130
-Irtifa: 1676.79|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4092597 Boylam: 33.6999130
-Irtifa: 1639.62|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4089698 Boylam: 33.7000846
-Irtifa: 1613.69|| Uydu Sayisi: 12 Irtifa(GPS): 2881.6999511 Enlem: 38.4089698 Boylam: 33.7000846
-Irtifa: 1583.59|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002410
-Irtifa: 1550.54|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002410
-Irtifa: 1515.32|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002410
-Irtifa: 1485.34|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002410
-Irtifa: 1454.44|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002410
-Irtifa: 1409.71|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002410
-Irtifa: 1373.30|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1365.21|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1361.74|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1334.40|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1340.50|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1327.51|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1319.50|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1293.74|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087944 Boylam: 33.7002716
-Irtifa: 1250.28|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1207.34|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1197.73|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1167.00|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1119.36|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1143.39|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1115.04|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1078.22|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4087028 Boylam: 33.7001762
-Irtifa: 1071.92|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 1060.25|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 1043.61|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 1027.16|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 1006.04|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 983.08|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 961.27|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 925.07|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 903.47|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4086761 Boylam: 33.7002143
-Irtifa: 903.29|| Uydu Sayisi: 11 Irtifa(GPS): 2703.8999023 Enlem: 38.4088058 Boylam: 33.6997756
-Irtifa: 879.01|| Uydu Sayisi: 0 Irtifa(GPS): 2703.8999023 Enlem: 38.4088058 Boylam: 33.6997756
-Irtifa: 843.72|| Uydu Sayisi: 0 Irtifa(GPS): 2703.8999023 Enlem: 38.4088058 Boylam: 33.6997756
-Irtifa: 849.79|| Uydu Sayisi: 0 Irtifa(GPS): 2703.8999023 Enlem: 38.4088058 Boylam: 33.6997756
-Irtifa: 836.23|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 807.47|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 775.77|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 757.12|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 734.18|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 721.92|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 721.81|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 707.10|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 680.62|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 642.51|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 627.05|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4087448 Boylam: 33.6997146
-Irtifa: 618.56|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4086112 Boylam: 33.6995773
-Irtifa: 603.76|| Uydu Sayisi: 12 Irtifa(GPS): 1791.1999511 Enlem: 38.4085960 Boylam: 33.6995544
-Irtifa: 565.37|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085960 Boylam: 33.6995544
-Irtifa: 535.17|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085960 Boylam: 33.6995544
-Irtifa: 536.81|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085960 Boylam: 33.6995544
-Irtifa: 527.29|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085464 Boylam: 33.6995086
-Irtifa: 520.09|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085464 Boylam: 33.6995086
-Irtifa: 484.26|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085464 Boylam: 33.6995086
-Irtifa: 457.18|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085464 Boylam: 33.6995086
-Irtifa: 438.99|| Uydu Sayisi: 11 Irtifa(GPS): 1520.1999511 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 434.72|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 454.47|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 446.04|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 439.32|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 426.19|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 411.12|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 418.42|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 405.08|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 408.34|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 398.56|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 387.05|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 1776.67|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 376.29|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 341.05|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 331.23|| Uydu Sayisi: 5 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 321.71|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 323.25|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 324.40|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 317.64|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 309.94|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 298.42|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 294.55|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 288.63|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 288.19|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 274.94|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 258.91|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 232.61|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 246.04|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 234.98|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 207.46|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 212.05|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 207.69|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 204.58|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 191.21|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 195.36|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 165.23|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 166.46|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 151.78|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 151.07|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 140.77|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 117.49|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 115.50|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 108.24|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 94.93|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 85.06|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 85.32|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 71.54|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 54.67|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 30.74|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 19.59|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 17.24|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 22.67|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 28.11|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
-Irtifa: 17.36|| Uydu Sayisi: 0 Irtifa(GPS): 1432.5999755 Enlem: 38.4085388 Boylam: 33.6994781
+Irtifa: 31.72
+Irtifa: 149.65
+Irtifa: 268.25
+Irtifa: 390.55
+Irtifa: 519.89
+Irtifa: 633.56
+Irtifa: 771.36
+Irtifa: 906.13
+Irtifa: 1021.978
+Irtifa: 1133.788
+Irtifa: 1240.66
+Irtifa: 1339.78
+Irtifa: 1440.83
+Irtifa: 1537.14
+Irtifa: 1622.72
+Irtifa: 1711.79
+Irtifa: 1803.22
+Irtifa: 1885.13
+Irtifa: 1963.23
+Irtifa: 2036.57
+Irtifa: 2106.04
+Irtifa: 2172.68
+Irtifa: 2235.07
+Irtifa: 2294.61
+Irtifa: 2351.68
+Irtifa: 2403.54
+Irtifa: 2453.84
+Irtifa: 2499.95
+Irtifa: 2543.38
+Irtifa: 2583.12
+Irtifa: 2619.81
+Irtifa: 2653.59
+Irtifa: 2683.90
+Irtifa: 2711.67
+Irtifa: 2736.06
+Irtifa: 2757.80
+Irtifa: 2776.23
+Irtifa: 2792.16
+Irtifa: 2804.87
+Irtifa: 2814.93
+Irtifa: 2822.32
+Irtifa: 2826.83
+Irtifa: 2828.80
+Irtifa: 2828.66
+Irtifa: 2827.09
+Irtifa: 2823.51
+Irtifa: 2815.57
+Irtifa: 2801.29
+Irtifa: 2758.51
+Irtifa: 2727.18
+Irtifa: 2737.89
+Irtifa: 2737.67
+Irtifa: 2734.41
+Irtifa: 2727.62
+Irtifa: 2711.13
+Irtifa: 2688.20
+Irtifa: 2656.17
+Irtifa: 2629.92
+Irtifa: 2595.75
+Irtifa: 2576.45
+Irtifa: 2564.59
+Irtifa: 2560.81
+Irtifa: 2554.98
+Irtifa: 2522.45
+Irtifa: 2501.45
+Irtifa: 2475.30
+Irtifa: 2448.84
+Irtifa: 2422.57
+Irtifa: 2399.31
+Irtifa: 2360.51
+Irtifa: 2331.69
+Irtifa: 2286.53
+Irtifa: 2244.55
+Irtifa: 2227.35
+Irtifa: 2217.67
+Irtifa: 2222.98
+Irtifa: 2229.65
+Irtifa: 2207.90
+Irtifa: 2151.55
+Irtifa: 2149.37
+Irtifa: 2133.84
+Irtifa: 2108.89
+Irtifa: 2054.94
+Irtifa: 1983.19
+Irtifa: 2014.65
+Irtifa: 2018.22
+Irtifa: 2004.45
+Irtifa: 1960.80
+Irtifa: 1901.95
+Irtifa: 1916.06
+Irtifa: 1880.94
+Irtifa: 1861.56
+Irtifa: 1860.76
+Irtifa: 1817.63
+Irtifa: 1733.39
+Irtifa: 1689.72
+Irtifa: 1676.79
+Irtifa: 1639.62
+Irtifa: 1613.69
+Irtifa: 1583.59
+Irtifa: 1550.54
+Irtifa: 1515.32
+Irtifa: 1485.34
+Irtifa: 1454.44
+Irtifa: 1409.71
+Irtifa: 1373.30
+Irtifa: 1365.21
+Irtifa: 1361.74
+Irtifa: 1334.40
+Irtifa: 1340.50
+Irtifa: 1327.51
+Irtifa: 1319.50
+Irtifa: 1293.74
+Irtifa: 1250.28
+Irtifa: 1207.34
+Irtifa: 1197.73
+Irtifa: 1167.00
+Irtifa: 1119.36
+Irtifa: 1143.39
+Irtifa: 1115.04
+Irtifa: 1078.22
+Irtifa: 1071.92
+Irtifa: 1060.25
+Irtifa: 1043.61
+Irtifa: 1027.16
+Irtifa: 1006.04
+Irtifa: 983.08
+Irtifa: 961.27
+Irtifa: 925.07
+Irtifa: 903.47
+Irtifa: 903.29
+Irtifa: 879.01
+Irtifa: 843.72
+Irtifa: 849.79
+Irtifa: 836.23
+Irtifa: 807.47
+Irtifa: 775.77
+Irtifa: 757.12
+Irtifa: 734.18
+Irtifa: 721.92
+Irtifa: 721.81
+Irtifa: 707.10
+Irtifa: 680.62
+Irtifa: 642.51
+Irtifa: 627.05
+Irtifa: 618.56
+Irtifa: 603.76
+Irtifa: 565.37
+Irtifa: 535.17
+Irtifa: 536.81
+Irtifa: 527.29
+Irtifa: 520.09
+Irtifa: 484.26
+Irtifa: 457.18
+Irtifa: 438.99
+Irtifa: 434.72
+Irtifa: 454.47
+Irtifa: 446.04
+Irtifa: 439.32
+Irtifa: 426.19
+Irtifa: 411.12
+Irtifa: 418.42
+Irtifa: 405.08
+Irtifa: 408.34
+Irtifa: 398.56
+Irtifa: 387.05
+Irtifa: 1776.6
+Irtifa: 376.29
+Irtifa: 341.05
+Irtifa: 331.23
+Irtifa: 321.71
+Irtifa: 323.25
+Irtifa: 324.40
+Irtifa: 317.64
+Irtifa: 309.94
+Irtifa: 298.42
+Irtifa: 294.55
+Irtifa: 288.63
+Irtifa: 288.19
+Irtifa: 274.94
+Irtifa: 258.91
+Irtifa: 232.61
+Irtifa: 246.04
+Irtifa: 234.98
+Irtifa: 207.46
+Irtifa: 212.05
+Irtifa: 207.69
+Irtifa: 204.58
+Irtifa: 191.21
+Irtifa: 195.36
+Irtifa: 165.23
+Irtifa: 166.46
+Irtifa: 151.78
+Irtifa: 151.07
+Irtifa: 140.77
+Irtifa: 117.49
+Irtifa: 115.50
+Irtifa: 108.24
+Irtifa: 94.93
+Irtifa: 85.06
+Irtifa: 85.32
+Irtifa: 71.54
+Irtifa: 54.67
+Irtifa: 30.74
+Irtifa: 19.59
+Irtifa: 17.24
+Irtifa: 22.67
+Irtifa: 28.11
+Irtifa: 17.36

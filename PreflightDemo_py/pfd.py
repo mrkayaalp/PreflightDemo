@@ -28,6 +28,8 @@ illinois_parse_column = ['time', 'ax', 'ay', 'az', 'gx', 'gy', 'gz','latitude','
 
 semrukV = ['time', 'ax', 'ay', 'az','barometer_altitude','velo']
 
+semruk3 = ['barometer_altitude'] #sep ':' text --> csv
+
 def openSerial():
     try:
         ser = serial.Serial('COM14', 115200) #COM 11 -- 14
@@ -43,12 +45,7 @@ def openSerial():
 
         
 def dataArrange():
-    data = pd.read_csv(TXT_FILE, names= ['barometer_altitude', 'smt','smt1'], sep='|') #txt file olarak konulacaklar virgüle göre ayrılacaktır
-
-    # data['barometer_altitude'] = data[0].str.split(':').str[1]
-
-    # data.drop(columns=[0, 1, 2], inplace=True) 
-
+    data = pd.read_csv(TXT_FILE, names= semruk3, sep=':') #txt file olarak konulacaklar virgüle göre ayrılacaktır
 
     data.to_csv('arrData.csv', columns= ['barometer_altitude'], index=False, header=True)
     
@@ -103,7 +100,7 @@ def main():
                 numbers = re.findall(r'-?\d+(?:\.\d+)?', line)
                 numbers_with_commas = ','.join(numbers)
 
-                currentTick = int(numbers[0]) #kongrulda float olacak
+                currentTick = int(numbers[0]) #kongrulda float olacak ve 6. indexten alınacak
             
                 if prevTick is not None:
                     timeDiff = currentTick - prevTick

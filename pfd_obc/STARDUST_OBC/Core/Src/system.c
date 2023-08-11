@@ -163,22 +163,7 @@ void sdErrorHandler()
 //            &bpc.gyro.x, &bpc.gyro.y, &bpc.gyro.z);
 // }
 
-void parseKongrulData(uint8_t *data)
-{
-    sscanf(data, "%f, %f, %f, %f, %f, %f, %f",
-           &altitude.altitude, &velocity.verticalVelocity,
-           &altitude.temperature, &altitude.humidity,
-           &gps.latitude, &gps.longtitude, &time.current);
-}
 
-void parseIllinoisData(uint8_t *data)
-{
-    sscanf(data, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f", &time.current,
-           &accel.x, &accel.y, &accel.z,
-           &gyro.x, &gyro.y, &gyro.z,
-           &gps.latitude, &gps.longtitude,
-           &illinois.altitude, &altitude.pressure);
-}
 void readData()
 {
     HAL_UART_Receive_IT(&huart2, rxBuffer, 1);

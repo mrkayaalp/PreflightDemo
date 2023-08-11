@@ -34,6 +34,7 @@
 #include "custom_bus.h"
 #include "lis3mdl.h"
 #include "system.h"
+#include "pfd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
